@@ -8,7 +8,7 @@ import org.hibernate.Session;
 
 import java.util.List;
 
-public class GenericDAO {
+public abstract class GenericDAO {
 	private final Session session;
 
 	public GenericDAO() {

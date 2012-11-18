@@ -70,28 +70,25 @@ public class Bien {
 		return nbPieces;
 	}
 
-	public void setGarage(int tailleGarage) {
-		this.tailleGarage = tailleGarage;
+	public void setGarage(int nouvelleTailleGarage) {
+		tailleGarage = nouvelleTailleGarage;
 		
 	}
 
 	public Integer getGarage() {
-		// TODO Auto-generated method stub
 		return tailleGarage;
 	}
 
-	public void setVeranda(int tailleVeranda) {
-		this.tailleVeranda=tailleVeranda;
+	public void setVeranda(int nouvelleTailleVeranda) {
+		tailleVeranda = nouvelleTailleVeranda;
 		
 	}
 
 	public Integer getVeranda() {
-		// TODO Auto-generated method stub
 		return tailleVeranda;
 	}
 
 	public Object getType() {
-		// TODO Auto-generated method stub
 		return new Object();
 	}
 	

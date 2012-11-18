@@ -2,12 +2,7 @@ package metier;
 
 import static org.hamcrest.CoreMatchers.is;
 import static org.hamcrest.MatcherAssert.assertThat;
-
-import org.hamcrest.core.IsNot;
-import org.hibernate.hql.internal.ast.tree.IsNotNullLogicOperatorNode;
-
 import com.gestimmo.metier.exceptions.AppliDataException;
-
 import com.gestimmo.metier.model.Bien;
 import junit.framework.TestCase;
 import junit.framework.TestSuite;
@@ -83,7 +78,6 @@ public class testBien extends TestCase {
 		assertThat(unBien.getVeranda(),is(20));
 	}
 	public void testTypeBien(){
-		
 		assertNotNull(unBien.getType());
 	}
 	
