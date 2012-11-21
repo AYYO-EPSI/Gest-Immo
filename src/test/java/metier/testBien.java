@@ -1,9 +1,20 @@
 package metier;
 
+import static org.hamcrest.CoreMatchers.instanceOf;
 import static org.hamcrest.CoreMatchers.is;
+import static org.hamcrest.CoreMatchers.notNullValue;
 import static org.hamcrest.MatcherAssert.assertThat;
+import static org.hamcrest.CoreMatchers.allOf;
+
+import java.util.ArrayList;
+
+import org.hamcrest.core.IsNot;
+
+
 import com.gestimmo.metier.exceptions.AppliDataException;
 import com.gestimmo.metier.model.Bien;
+import com.gestimmo.metier.model.Periode;
+
 import junit.framework.TestCase;
 import junit.framework.TestSuite;
 
@@ -18,8 +29,8 @@ public class testBien extends TestCase {
 		unBien = Bien.CabaneAuFondDuJardin;
 	}
 
-	public void testObjetExiste() {
-		assertNotNull(unBien);
+	public void testObjetExisteetPasNul() {
+		assertThat(unBien, is(allOf(instanceOf(Bien.class),notNullValue(Bien.class))));
 	}
 	
 	public void testSurface (){
@@ -77,9 +88,28 @@ public class testBien extends TestCase {
 		unBien.setVeranda(20);
 		assertThat(unBien.getVeranda(),is(20));
 	}
-	public void testTypeBien(){
-		assertNotNull(unBien.getType());
+	
+	public void testAjoutPeriode(){
+		unBien.ajouterPeriode(new Periode());
+		assertThat(unBien.getPeriodes().size(),is(1));
 	}
+	
+	public void testAjoutPeriodes(){
+		ArrayList<Periode> periodes = new ArrayList();
+		periodes.add(new Periode());
+		periodes.add(new Periode());
+		
+		unBien.ajouterPeriodes(periodes);
+		assertThat(unBien.getPeriodes().size(),is(2));
+	}
+	
+	public void testUnePeriode(){
+		Periode p = new Periode( 1 );
+		unBien.ajouterPeriode( p );
+		assertThat(unBien.getPeriode( 1 ).getId(),is( 1 ));
+	}
+	
+	
 	
 	
 }

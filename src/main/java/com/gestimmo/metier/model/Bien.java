@@ -17,6 +17,9 @@ public enum Bien {
 	private int tailleGarage;
 	private int nbPieces;
 	private int tailleVeranda;
+	
+	private ArrayList<Periode> periodes = new ArrayList<Periode>();
+	
 
 	public void setSurface(double nouveleSurface) {
 		surface = nouveleSurface;
@@ -91,8 +94,30 @@ public enum Bien {
 		return tailleVeranda;
 	}
 
-	public Object getType() {
-		return new Object();
+	public Periode getPeriode(int id) {
+		Periode periodeARetourner = null;
+		for (Periode p : periodes) {
+			if ( p.getId() == id ) {
+				periodeARetourner = p;
+			}
+		}
+		
+		return periodeARetourner;
+		
 	}
+
+	public ArrayList<Periode> getPeriodes() {
+		return periodes;
+	}
+
+	public void ajouterPeriode(Periode nouvellePeriode) {
+		periodes.add(nouvellePeriode);
+	}
+
+	public void ajouterPeriodes(ArrayList<Periode> listePeriodes) {
+		periodes = listePeriodes;
+	}
+
+	
 	
 }
