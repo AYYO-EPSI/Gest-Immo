@@ -15,7 +15,7 @@ public class testBien extends TestCase {
 	}
 
 	public void setUp(){
-		unBien = new Bien();
+		unBien = Bien.CabaneAuFondDuJardin;
 	}
 
 	public void testObjetExiste() {

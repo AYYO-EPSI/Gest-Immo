@@ -4,7 +4,10 @@ import com.gestimmo.metier.exceptions.AppliDataException;
 
 import java.util.ArrayList;
 
-public class Bien {
+public enum Bien {
+	Chateau,
+	Taudis,
+	CabaneAuFondDuJardin;
 
 	private double surface;
 	private char energie;
