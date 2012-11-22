@@ -3,11 +3,18 @@ package com.gestimmo.metier.model;
 import com.gestimmo.metier.exceptions.AppliDataException;
 
 import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Iterator;
+import java.util.Map;
 
-public enum Bien {
-	Chateau,
-	Taudis,
-	CabaneAuFondDuJardin;
+import org.joda.time.DateTime;
+import org.joda.time.Days;
+import org.joda.time.Interval;
+
+public class Bien {
+//	Chateau,
+//	Taudis,
+//	CabaneAuFondDuJardin;
 
 	private double surface;
 	private char energie;
@@ -118,6 +125,32 @@ public enum Bien {
 		periodes = listePeriodes;
 	}
 
+	public double calculerPrixLocation(DateTime dateDebutReservation, DateTime dateFinReservation) {
+		double prixARetourner = 0;
+		HashMap<Integer, Periode> listePeriodes = new HashMap<Integer, Periode>();
+		for ( Periode p : periodes ) {			
+			
+			Interval intervalDates = new Interval(p.getDateDebut(), p.getDateFin());
+			
+			if ( intervalDates.contains(dateDebutReservation) && intervalDates.contains(dateFinReservation) ) {
+				listePeriodes.put(Days.daysBetween(dateDebutReservation.toDateMidnight(), dateFinReservation.toDateMidnight()).getDays(), p);
+			}
+			else if ( intervalDates.contains(dateDebutReservation) ) 
+			{
+				listePeriodes.put(( Days.daysBetween(dateDebutReservation.toDateMidnight(), p.getDateFin().toDateMidnight()).getDays() ), p);
+			} else if ( intervalDates.contains(dateFinReservation) ) {
+				listePeriodes.put(( Days.daysBetween(p.getDateDebut().toDateMidnight(), dateFinReservation.toDateMidnight()).getDays() ), p);
+			} else if ( !intervalDates.isBefore(dateDebutReservation) && !intervalDates.isAfter(dateFinReservation)) {
+				listePeriodes.put(( Days.daysBetween( p.getDateDebut().toDateMidnight(), p.getDateFin().toDateMidnight()).getDays() ), p);
+			}
+		}
+		
+		for (Map.Entry<Integer, Periode> e : listePeriodes.entrySet()) {
+			prixARetourner += e.getKey() * e.getValue().getMontant();
+		}
+		
+		return prixARetourner;
+	}
 	
 	
 }

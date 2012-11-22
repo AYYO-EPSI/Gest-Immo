@@ -9,6 +9,8 @@ import static org.hamcrest.CoreMatchers.allOf;
 import java.util.ArrayList;
 
 import org.hamcrest.core.IsNot;
+import org.joda.time.DateTime;
+import org.joda.time.Days;
 
 
 import com.gestimmo.metier.exceptions.AppliDataException;
@@ -26,7 +28,8 @@ public class testBien extends TestCase {
 	}
 
 	public void setUp(){
-		unBien = Bien.CabaneAuFondDuJardin;
+//		unBien = Bien.CabaneAuFondDuJardin;
+		unBien = new Bien();
 	}
 
 	public void testObjetExisteetPasNul() {
@@ -109,6 +112,49 @@ public class testBien extends TestCase {
 		assertThat(unBien.getPeriode( 1 ).getId(),is( 1 ));
 	}
 	
+	public void testCalculerPrixPourUnInterval() {
+		Periode periode = new Periode(1);
+		periode.setDateDebut(new DateTime(2012, 1, 1, 0, 0));
+		periode.setDateFin(new DateTime(2012, 12, 31, 0, 0));
+		periode.setMontant(85);
+
+		DateTime dateDebutReservation = new DateTime(2012, 1, 15, 0, 0);
+		DateTime dateFinReservation = new DateTime(2012, 2, 15, 0, 0);
+		
+		unBien.ajouterPeriode(periode);
+
+		assertThat(unBien.calculerPrixLocation(dateDebutReservation, dateFinReservation), is(periode.getMontant() * ( Days.daysBetween(dateDebutReservation.toDateMidnight(), dateFinReservation.toDateMidnight()).getDays() )));
+	}
+	
+	public void testCalculerPrixPourPlusieursIntervales() {
+		Periode periode1 = new Periode(1);
+		periode1.setDateDebut(new DateTime(2012, 1, 1, 0, 0));
+		periode1.setDateFin(new DateTime(2012, 1, 31, 0, 0));
+		periode1.setMontant(25);
+
+		Periode periode2 = new Periode(2);
+		periode2.setDateDebut(new DateTime(2012, 2, 1, 0, 0));
+		periode2.setDateFin(new DateTime(2012, 2, 29, 0, 0));
+		periode2.setMontant(15);
+
+		Periode periode3 = new Periode(3);
+		periode3.setDateDebut(new DateTime(2012, 3, 1, 0, 0));
+		periode3.setDateFin(new DateTime(2012, 3, 31, 0, 0));
+		periode3.setMontant(85);
+
+		DateTime dateDebutReservation = new DateTime(2012, 1, 15, 0, 0);
+		DateTime dateFinReservation = new DateTime(2012, 3, 15, 0, 0);
+
+		unBien.ajouterPeriode(periode1);
+		unBien.ajouterPeriode(periode2);
+		unBien.ajouterPeriode(periode3);
+		
+		double montant = periode1.getMontant() * 16;
+		montant += periode2.getMontant() * 28;
+		montant += periode3.getMontant() * 14;
+		
+		assertThat(unBien.calculerPrixLocation(dateDebutReservation, dateFinReservation), is( montant ));
+	}
 	
 	
 	

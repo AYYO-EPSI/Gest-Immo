@@ -1,13 +1,13 @@
 package com.gestimmo.metier.model;
 
-import java.util.Date;
+import org.joda.time.DateTime;
 
 public class Periode {
 
 	private String libelle;
 	private double montant;
-	private Date dateDebut;
-	private Date dateFin;
+	private DateTime dateDebut;
+	private DateTime dateFin;
 	private int id;
 
 	public Periode() {}
@@ -32,19 +32,19 @@ public class Periode {
 		return montant;
 	}
 
-	public void setDateDebut(Date date) {
+	public void setDateDebut(DateTime date) {
 		dateDebut = date;
 	}
 
-	public Date getDateDebut() {
+	public DateTime getDateDebut() {
 		return dateDebut;
 	}
 
-	public void setDateFin(Date date) {
+	public void setDateFin(DateTime date) {
 		dateFin = date;
 	}
 
-	public Date getDateFin() {
+	public DateTime getDateFin() {
 		return dateFin;
 	}
 

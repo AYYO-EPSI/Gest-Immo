@@ -4,10 +4,7 @@ import static org.hamcrest.CoreMatchers.instanceOf;
 import static org.hamcrest.CoreMatchers.is;
 import static org.hamcrest.CoreMatchers.notNullValue;
 import static org.hamcrest.MatcherAssert.assertThat;
-
-import java.util.Date;
-
-import com.gestimmo.metier.model.Bien;
+import org.joda.time.DateTime;
 import com.gestimmo.metier.model.Periode;
 import static org.hamcrest.CoreMatchers.allOf;
 
@@ -41,13 +38,13 @@ public class testPeriode extends TestCase {
 	}
 
 	public void testDateDebut() {
-		Date date = new Date();
+		DateTime date = new DateTime();
 		unePeriode.setDateDebut(date);
 		assertThat(unePeriode.getDateDebut(), is(date));
 	}
 
 	public void testDateFin() {
-		Date date = new Date();
+		DateTime date = new DateTime();
 		unePeriode.setDateFin(date);
 		assertThat(unePeriode.getDateFin(), is(date));
 	}
