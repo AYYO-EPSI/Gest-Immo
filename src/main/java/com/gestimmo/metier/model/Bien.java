@@ -14,20 +14,22 @@ public class Bien {
 	//	Taudis,
 	//	CabaneAuFondDuJardin;
 
-	private double surface;
-	private char energie;
+	private double surface; //fait
+	private char energie; //fait
 	private String adresse;
 	private String codePostal;
 	private String ville;
-	private int tailleGarage;
-	private int nbPieces;
+	private int tailleGarage; //fait
+	private int nbPieces; // fait
 	private int tailleVeranda;
 
 	private ArrayList<Periode> periodes = new ArrayList<Periode>();
 
 
-	public void setSurface(double nouveleSurface) {
-		surface = nouveleSurface;
+	public void setSurface(double nouvelleSurface) throws AppliDataException {
+                if (nouvelleSurface <= 0)
+			throw new AppliDataException("Surface non conforme.");
+		surface = nouvelleSurface;
 	}
 
 	public double getSurface() {
@@ -88,7 +90,10 @@ public class Bien {
 		return nbPieces;
 	}
 
-	public void setGarage(int nouvelleTailleGarage) {
+	public void setGarage(int nouvelleTailleGarage) throws AppliDataException {
+            if(nouvelleTailleGarage < 0){
+                throw new AppliDataException ("le nombre de metre carre pour le garage est invalide");
+            }
 		tailleGarage = nouvelleTailleGarage;
 	}
 
@@ -96,7 +101,10 @@ public class Bien {
 		return tailleGarage;
 	}
 
-	public void setVeranda(int nouvelleTailleVeranda) {
+	public void setVeranda(int nouvelleTailleVeranda) throws AppliDataException {
+            if(nouvelleTailleVeranda < 0){
+                throw new AppliDataException ("le nombre de metre carre pour la veranda est invalide");
+            }
 		tailleVeranda = nouvelleTailleVeranda;
 	}
 

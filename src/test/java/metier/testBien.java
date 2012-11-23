@@ -36,6 +36,15 @@ public class testBien extends TestCase {
 	  unBien.setSurface(40.00);
 	  assertThat(unBien.getSurface(), is(40.00));
 	}
+        
+	public void testSurfaceInferieurOuEgale0() {
+            try {
+                    unBien.setSurface(-1);
+                    fail("Impossible d'avoir une surface inferieur ou Žgale ˆ 0");
+            } catch (AppliDataException e) {
+            }
+        }
+
 	
 	public void testEnergie(){
 		unBien.setEnergie('A');
@@ -82,11 +91,28 @@ public class testBien extends TestCase {
 		unBien.setGarage(10);
 		assertThat(unBien.getGarage(), is(10));
 	}
+        public void testGarageinf0(){
+            try{
+                unBien.setGarage(-1);
+                fail("valeur surface garage non valide car inferieur ˆ 0"); 
+            }catch (AppliDataException e){
+                
+            }
+        }
 	
 	public void testVeranda() {
 		unBien.setVeranda(20);
 		assertThat(unBien.getVeranda(),is(20));
 	}
+        
+        public void testTailleVeranda() {
+            try{
+                unBien.setVeranda(-5);
+                fail("valeur surface veranda non valide car inferieur ˆ 0"); 
+            }catch (AppliDataException e){
+                
+            }
+        }
 	
 	public void testAjoutPeriode(){
 		unBien.ajouterPeriode(new Periode());
@@ -151,7 +177,6 @@ public class testBien extends TestCase {
 		
 		assertThat(unBien.calculerPrixLocation(dateDebutReservation, dateFinReservation), is( montant ));
 	}
-	
 	
 	
 }
