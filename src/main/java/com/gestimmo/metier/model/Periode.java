@@ -10,7 +10,8 @@ public class Periode {
 	private DateTime dateFin;
 	private int id;
 
-	public Periode() {}
+	public Periode() {
+	}
 
 	public Periode(int indice) {
 		id = indice;
