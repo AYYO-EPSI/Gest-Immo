@@ -8,9 +8,6 @@ import org.joda.time.Interval;
 import java.util.ArrayList;
 
 public class Bien {
-	//	Chateau,
-	//	Taudis,
-	//	CabaneAuFondDuJardin;
 
 	private int id;
 	private double surface;
@@ -22,9 +19,22 @@ public class Bien {
 	private int nbPieces; // fait
 	private int tailleVeranda;
 	private ArrayList<Periode> periodes = new ArrayList<Periode>();
+	private Type  type;
 
 	public int getId() {
 		return id;
+	}
+
+	public void setId(int id) {
+		this.id = id;
+	}
+
+	public Type getType() {
+		return type;
+	}
+
+	public void setType(Type type) {
+		this.type = type;
 	}
 
 	public void setId(int id) {
