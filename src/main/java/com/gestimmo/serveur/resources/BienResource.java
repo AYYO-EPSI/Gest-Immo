@@ -2,7 +2,8 @@ package com.gestimmo.serveur.resources;
 
 import com.gestimmo.serveur.processes.TemplateRepresentation;
 import org.restlet.representation.Representation;
-import org.restlet.resource.*;
+import org.restlet.resource.Get;
+import org.restlet.resource.ServerResource;
 
 public class BienResource extends ServerResource {
 

@@ -32,16 +32,16 @@ public class Periode {
 		return montant;
 	}
 
-	public void setDateDebut(DateTime date) {
-		dateDebut = date;
+	public void setDateDebut(DateTime nouvelleDateDebut) {
+		dateDebut = nouvelleDateDebut;
 	}
 
 	public DateTime getDateDebut() {
 		return dateDebut;
 	}
 
-	public void setDateFin(DateTime date) {
-		dateFin = date;
+	public void setDateFin(DateTime nouvelleDateFin) {
+		dateFin = nouvelleDateFin;
 	}
 
 	public DateTime getDateFin() {

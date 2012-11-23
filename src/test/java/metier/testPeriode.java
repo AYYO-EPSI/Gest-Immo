@@ -1,15 +1,15 @@
 package metier;
 
+import com.gestimmo.metier.model.Periode;
+import junit.framework.TestCase;
+import junit.framework.TestSuite;
+import org.joda.time.DateTime;
+
 import static org.hamcrest.CoreMatchers.instanceOf;
 import static org.hamcrest.CoreMatchers.is;
 import static org.hamcrest.CoreMatchers.notNullValue;
-import static org.hamcrest.MatcherAssert.assertThat;
-import org.joda.time.DateTime;
-import com.gestimmo.metier.model.Periode;
 import static org.hamcrest.CoreMatchers.allOf;
-
-import junit.framework.TestCase;
-import junit.framework.TestSuite;
+import static org.hamcrest.MatcherAssert.assertThat;
 
 
 public class testPeriode extends TestCase {

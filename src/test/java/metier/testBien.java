@@ -1,24 +1,20 @@
 package metier;
 
+import com.gestimmo.metier.exceptions.AppliDataException;
+import com.gestimmo.metier.model.Bien;
+import com.gestimmo.metier.model.Periode;
+import junit.framework.TestCase;
+import junit.framework.TestSuite;
+import org.joda.time.DateTime;
+import org.joda.time.Days;
+
+import java.util.ArrayList;
+
 import static org.hamcrest.CoreMatchers.instanceOf;
 import static org.hamcrest.CoreMatchers.is;
 import static org.hamcrest.CoreMatchers.notNullValue;
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.CoreMatchers.allOf;
-
-import java.util.ArrayList;
-
-import org.hamcrest.core.IsNot;
-import org.joda.time.DateTime;
-import org.joda.time.Days;
-
-
-import com.gestimmo.metier.exceptions.AppliDataException;
-import com.gestimmo.metier.model.Bien;
-import com.gestimmo.metier.model.Periode;
-
-import junit.framework.TestCase;
-import junit.framework.TestSuite;
 
 public class testBien extends TestCase {
 	 Bien unBien;
@@ -102,7 +98,7 @@ public class testBien extends TestCase {
 		periodes.add(new Periode());
 		periodes.add(new Periode());
 		
-		unBien.ajouterPeriodes(periodes);
+		unBien.setPeriodes(periodes);
 		assertThat(unBien.getPeriodes().size(),is(2));
 	}
 	

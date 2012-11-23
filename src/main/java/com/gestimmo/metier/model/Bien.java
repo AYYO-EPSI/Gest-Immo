@@ -1,15 +1,13 @@
 package com.gestimmo.metier.model;
 
 import com.gestimmo.metier.exceptions.AppliDataException;
-
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.Iterator;
-import java.util.Map;
-
 import org.joda.time.DateTime;
 import org.joda.time.Days;
 import org.joda.time.Interval;
+
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Map;
 
 public class Bien {
 //	Chateau,
@@ -101,16 +99,15 @@ public class Bien {
 		return tailleVeranda;
 	}
 
-	public Periode getPeriode(int id) {
+	public Periode getPeriode(int idPeriode) {
 		Periode periodeARetourner = null;
-		for (Periode p : periodes) {
-			if ( p.getId() == id ) {
-				periodeARetourner = p;
+		for (Periode unePeriode : periodes) {
+			if ( unePeriode.getId() == idPeriode ) {
+				periodeARetourner = unePeriode;
 			}
 		}
 		
 		return periodeARetourner;
-		
 	}
 
 	public ArrayList<Periode> getPeriodes() {
@@ -121,7 +118,7 @@ public class Bien {
 		periodes.add(nouvellePeriode);
 	}
 
-	public void ajouterPeriodes(ArrayList<Periode> listePeriodes) {
+	public void setPeriodes(ArrayList<Periode> listePeriodes) {
 		periodes = listePeriodes;
 	}
 
