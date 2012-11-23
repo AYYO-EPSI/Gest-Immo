@@ -12,6 +12,7 @@ public class Bien {
 	//	Taudis,
 	//	CabaneAuFondDuJardin;
 
+	private int id;
 	private double surface;
 	private char energie;
 	private String adresse;
@@ -20,9 +21,15 @@ public class Bien {
 	private int tailleGarage;
 	private int nbPieces;
 	private int tailleVeranda;
-
 	private ArrayList<Periode> periodes = new ArrayList<Periode>();
 
+	public int getId() {
+		return id;
+	}
+
+	public void setId(int id) {
+		this.id = id;
+	}
 
 	public void setSurface(double nouveleSurface) {
 		surface = nouveleSurface;

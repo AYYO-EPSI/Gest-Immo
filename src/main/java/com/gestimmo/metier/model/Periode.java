@@ -1,5 +1,6 @@
 package com.gestimmo.metier.model;
 
+import com.gestimmo.metier.exceptions.AppliDataException;
 import org.joda.time.DateTime;
 
 public class Periode {
@@ -25,7 +26,11 @@ public class Periode {
 		return libelle;
 	}
 
-	public void setMontant(double nouveauMontant) {
+	public void setMontant(double nouveauMontant) throws AppliDataException {
+		if (nouveauMontant <= 0){
+			throw new AppliDataException("Le montant d'une location doit etre positif.");
+			}
+
 		montant = nouveauMontant;
 	}
 
@@ -33,7 +38,11 @@ public class Periode {
 		return montant;
 	}
 
-	public void setDateDebut(DateTime nouvelleDateDebut) {
+	public void setDateDebut(DateTime nouvelleDateDebut) throws AppliDataException {
+		if (dateFin != null && nouvelleDateDebut.isAfter(dateFin)) {
+			throw new AppliDataException ("La date de debut doit etre inferieure a la date de fin de periode");
+		}
+
 		dateDebut = nouvelleDateDebut;
 	}
 
@@ -41,7 +50,11 @@ public class Periode {
 		return dateDebut;
 	}
 
-	public void setDateFin(DateTime nouvelleDateFin) {
+	public void setDateFin(DateTime nouvelleDateFin) throws AppliDataException {
+		if (dateDebut != null && nouvelleDateFin.isBefore(dateDebut)) {
+			throw new AppliDataException ("La date de fin doit etre superieure a la date de debut de periode");
+		}
+
 		dateFin = nouvelleDateFin;
 	}
 
