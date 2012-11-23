@@ -15,34 +15,30 @@ public class Bien {
 	private String adresse;
 	private String codePostal;
 	private String ville;
-	private int tailleGarage; //fait
-	private int nbPieces; // fait
+	private int tailleGarage;
+	private int nbPieces;
 	private int tailleVeranda;
 	private ArrayList<Periode> periodes = new ArrayList<Periode>();
-	private Type  type;
+	private Type type;
 
 	public int getId() {
 		return id;
 	}
 
-	public void setId(int id) {
-		this.id = id;
+	public void setId(int nouvelId) {
+		id = nouvelId;
 	}
 
 	public Type getType() {
 		return type;
 	}
 
-	public void setType(Type type) {
-		this.type = type;
-	}
-
-	public void setId(int id) {
-		this.id = id;
+	public void setType(Type nouveauType) {
+		type = nouveauType;
 	}
 
 	public void setSurface(double nouvelleSurface) throws AppliDataException {
-                if (nouvelleSurface <= 0)
+		if (nouvelleSurface <= 0)
 			throw new AppliDataException("Surface non conforme.");
 		surface = nouvelleSurface;
 	}
@@ -106,9 +102,9 @@ public class Bien {
 	}
 
 	public void setGarage(int nouvelleTailleGarage) throws AppliDataException {
-            if(nouvelleTailleGarage < 0){
-                throw new AppliDataException ("le nombre de metre carre pour le garage est invalide");
-            }
+		if (nouvelleTailleGarage < 0) {
+			throw new AppliDataException("le nombre de metre carre pour le garage est invalide");
+		}
 		tailleGarage = nouvelleTailleGarage;
 	}
 
@@ -117,9 +113,9 @@ public class Bien {
 	}
 
 	public void setVeranda(int nouvelleTailleVeranda) throws AppliDataException {
-            if(nouvelleTailleVeranda < 0){
-                throw new AppliDataException ("le nombre de metre carre pour la veranda est invalide");
-            }
+		if (nouvelleTailleVeranda < 0) {
+			throw new AppliDataException("le nombre de metre carre pour la veranda est invalide");
+		}
 		tailleVeranda = nouvelleTailleVeranda;
 	}
 
@@ -160,7 +156,7 @@ public class Bien {
 		for (Periode p : periodes) {
 			intervalDates = new Interval(p.getDateDebut(), p.getDateFin());
 
-			if ( ( intervalEntrePeriode = intervalDates.overlap(intervalReservation) ) != null) {
+			if ((intervalEntrePeriode = intervalDates.overlap(intervalReservation)) != null) {
 				totalJour = Days.daysBetween(intervalEntrePeriode.getStart().toDateMidnight(), intervalEntrePeriode.getEnd().toDateMidnight()).getDays();
 				prixARetourner += totalJour * p.getMontant();
 			}
@@ -168,6 +164,4 @@ public class Bien {
 
 		return prixARetourner;
 	}
-
-
 }

@@ -6,29 +6,25 @@ import junit.framework.TestCase;
 import junit.framework.TestSuite;
 import org.joda.time.DateTime;
 
-import static org.hamcrest.CoreMatchers.instanceOf;
-import static org.hamcrest.CoreMatchers.is;
-import static org.hamcrest.CoreMatchers.notNullValue;
-import static org.hamcrest.CoreMatchers.allOf;
+import static org.hamcrest.CoreMatchers.*;
 import static org.hamcrest.MatcherAssert.assertThat;
-import static org.hamcrest.Matchers.greaterThan;
 
 
 public class testPeriode extends TestCase {
 	Periode unePeriode;
-	
+
 	public static TestSuite suite() {
 		return new TestSuite(testPeriode.class);
 	}
-	
-	public void setUp(){
+
+	public void setUp() {
 		unePeriode = new Periode();
 	}
-	
+
 	public void testObjetExisteetPasNul() {
-		assertThat(unePeriode, is(allOf(instanceOf(Periode.class),notNullValue(Periode.class))));
-}
-	
+		assertThat(unePeriode, is(allOf(instanceOf(Periode.class), notNullValue(Periode.class))));
+	}
+
 	public void testLibelle() {
 		unePeriode.setLibelle("Periode1");
 		assertThat(unePeriode.getLibelle(), is("Periode1"));
@@ -66,7 +62,8 @@ public class testPeriode extends TestCase {
 			unePeriode.setDateDebut(dateDebut);
 			unePeriode.setDateFin(dateFin);
 			fail("La date de debut doit etre inferieure a la date de fin");
-		} catch (AppliDataException a) {}
+		} catch (AppliDataException a) {
+		}
 	}
 
 	public void testDebutApresFin() {
@@ -76,7 +73,8 @@ public class testPeriode extends TestCase {
 			unePeriode.setDateFin(dateFin);
 			unePeriode.setDateDebut(dateDebut);
 			fail("La date de fin doit etre superieure a la date de debut");
-		} catch (AppliDataException a) {}
+		} catch (AppliDataException a) {
+		}
 	}
 
 }
