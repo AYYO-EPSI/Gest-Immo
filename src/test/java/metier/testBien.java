@@ -24,7 +24,7 @@ public class testBien extends TestCase {
 	}
 
 	public void setUp(){
-//		unBien = Bien.CabaneAuFondDuJardin;
+		//unBien = Bien.CabaneAuFondDuJardin;
 		unBien = new Bien();
 	}
 
