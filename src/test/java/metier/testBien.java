@@ -3,6 +3,7 @@ package metier;
 import com.gestimmo.metier.exceptions.AppliDataException;
 import com.gestimmo.metier.model.Bien;
 import com.gestimmo.metier.model.Periode;
+import com.gestimmo.metier.model.Type;
 import junit.framework.TestCase;
 import junit.framework.TestSuite;
 import org.joda.time.DateTime;
@@ -21,7 +22,6 @@ public class testBien extends TestCase {
 	}
 
 	public void setUp() {
-		//unBien = Bien.CabaneAuFondDuJardin;
 		unBien = new Bien();
 	}
 
@@ -176,7 +176,10 @@ public class testBien extends TestCase {
 		assertThat(unBien.calculerPrixLocation(dateDebutReservation, dateFinReservation), is(montant));
 	}
 
-
+	   public void testType() {
+			unBien.setType(Type.Chateau);
+			assertThat(unBien.getType(), is(Type.Chateau));
+	   }
 }
 
 	
