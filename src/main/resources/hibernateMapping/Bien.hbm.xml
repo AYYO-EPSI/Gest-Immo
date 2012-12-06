@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping package="com.gestimmo.metier.model">
+    <class name="Bien" table="bien">
+        <id column="bien_id" type="integer" unsaved-value="null">
+            <generator class="native" />
+        </id>
+        
+        <property name="surface" column="bien_surface" type="double" not-null="true" />
+        <property name="energie" column="bien_energie" type="char" not-null="true" />
+        <property name="codePostal" column="bien_codePostal" type="string" not-null="true" />
+        <property name="adresse" column="bien_adresse" type="string" not-null="true" />
+        <property name="ville" column="bien_ville" type="string" not-null="true" />
+        <property name="tailleGarage" column="bien_tailleGarage" type="integer" not-null="false" />
+        <property name="nbPieces" column="bien_nbPieces" type="integer" not-null="true" />
+        <property name="tailleVeranda" column="bien_tailleVeranda" type="integer" not-null="false" />
+        
+        
+    <!--     
+     <many-to-one name="annonceur" class="Recruteur" column="ann_idAnnonceur" cascade="delete" />
+        
+        <set name="cvFavoris" table="cvfavoris">
+            <key column="cvfav_annId" not-null="true" />
+            <many-to-many class="CV" column="cvfav_cvId" />
+        </set>
+        
+        <set name="competencesRecherchees" table="competencesrecherchees">
+            <key column="cptr_annId" not-null="true" />
+            <many-to-many class="Competence" column="cptr_compId" />
+        </set>
+         -->
+    </class>
+</hibernate-mapping>

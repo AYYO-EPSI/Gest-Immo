@@ -57,13 +57,14 @@ public class Bien {
 		return adresse;
 	}
 
-	public void setCodePostale(String nouveauCodePostal) {
+	public void setCodePostal(String nouveauCodePostal) {
 		 codePostal = nouveauCodePostal;
 	}
 
-	public String getCodePostale() {
+	public String getCodePostal() {
 		return codePostal;
 	}
+	
 
 	public void setVille(String nouvelleVille) {
 		ville = nouvelleVille;
@@ -83,21 +84,21 @@ public class Bien {
 		return nbPieces;
 	}
 
-	public void setGarage(int nouvelleTailleGarage) {
+	public void setTailleGarage(int nouvelleTailleGarage) {
 		tailleGarage = nouvelleTailleGarage;
 		
 	}
 
-	public Integer getGarage() {
+	public Integer getTailleGarage() {
 		return tailleGarage;
 	}
 
-	public void setVeranda(int nouvelleTailleVeranda) {
+	public void setTailleVeranda(int nouvelleTailleVeranda) {
 		tailleVeranda = nouvelleTailleVeranda;
 		
 	}
 
-	public Integer getVeranda() {
+	public Integer getTailleVeranda() {
 		return tailleVeranda;
 	}
 
@@ -125,32 +126,7 @@ public class Bien {
 		periodes = listePeriodes;
 	}
 
-	public double calculerPrixLocation(DateTime dateDebutReservation, DateTime dateFinReservation) {
-		double prixARetourner = 0;
-		HashMap<Integer, Periode> listePeriodes = new HashMap<Integer, Periode>();
-		for ( Periode p : periodes ) {			
-			
-			Interval intervalDates = new Interval(p.getDateDebut(), p.getDateFin());
-			
-			if ( intervalDates.contains(dateDebutReservation) && intervalDates.contains(dateFinReservation) ) {
-				listePeriodes.put(Days.daysBetween(dateDebutReservation.toDateMidnight(), dateFinReservation.toDateMidnight()).getDays(), p);
-			}
-			else if ( intervalDates.contains(dateDebutReservation) ) 
-			{
-				listePeriodes.put(( Days.daysBetween(dateDebutReservation.toDateMidnight(), p.getDateFin().toDateMidnight()).getDays() ), p);
-			} else if ( intervalDates.contains(dateFinReservation) ) {
-				listePeriodes.put(( Days.daysBetween(p.getDateDebut().toDateMidnight(), dateFinReservation.toDateMidnight()).getDays() ), p);
-			} else if ( !intervalDates.isBefore(dateDebutReservation) && !intervalDates.isAfter(dateFinReservation)) {
-				listePeriodes.put(( Days.daysBetween( p.getDateDebut().toDateMidnight(), p.getDateFin().toDateMidnight()).getDays() ), p);
-			}
-		}
-		
-		for (Map.Entry<Integer, Periode> e : listePeriodes.entrySet()) {
-			prixARetourner += e.getKey() * e.getValue().getMontant();
-		}
-		
-		return prixARetourner;
-	}
+	
 	
 	
 }

@@ -11,10 +11,12 @@ import java.util.ArrayList;
 import org.hamcrest.core.IsNot;
 import org.joda.time.DateTime;
 import org.joda.time.Days;
+import org.joda.time.Interval;
 
 
 import com.gestimmo.metier.exceptions.AppliDataException;
 import com.gestimmo.metier.model.Bien;
+import com.gestimmo.metier.model.Calculateur;
 import com.gestimmo.metier.model.Periode;
 
 import junit.framework.TestCase;
@@ -22,7 +24,8 @@ import junit.framework.TestSuite;
 
 public class testBien extends TestCase {
 	 Bien unBien;
-
+	 Calculateur calc;
+	 
 	public static TestSuite suite() {
 		return new TestSuite(testBien.class);
 	}
@@ -30,6 +33,7 @@ public class testBien extends TestCase {
 	public void setUp(){
 //		unBien = Bien.CabaneAuFondDuJardin;
 		unBien = new Bien();
+		calc = new Calculateur();
 	}
 
 	public void testObjetExisteetPasNul() {
@@ -83,7 +87,7 @@ public class testBien extends TestCase {
 	}
 	
 	public void testGarage() {
-		unBien.setGarage(10);
+		unBien.setTailleGarage(10);
 		assertThat(unBien.getGarage(), is(10));
 	}
 	
@@ -122,8 +126,9 @@ public class testBien extends TestCase {
 		DateTime dateFinReservation = new DateTime(2012, 2, 15, 0, 0);
 		
 		unBien.ajouterPeriode(periode);
-
-		assertThat(unBien.calculerPrixLocation(dateDebutReservation, dateFinReservation), is(periode.getMontant() * ( Days.daysBetween(dateDebutReservation.toDateMidnight(), dateFinReservation.toDateMidnight()).getDays() )));
+		Interval interval = new Interval(dateDebutReservation, dateFinReservation);
+		
+		assertThat(calc.calculerPrixLocation(unBien, interval), is(periode.getMontant() * ( Days.daysBetween(dateDebutReservation.toDateMidnight(), dateFinReservation.toDateMidnight()).getDays() )));
 	}
 	
 	public void testCalculerPrixPourPlusieursIntervales() {
@@ -153,7 +158,9 @@ public class testBien extends TestCase {
 		montant += periode2.getMontant() * 28;
 		montant += periode3.getMontant() * 14;
 		
-		assertThat(unBien.calculerPrixLocation(dateDebutReservation, dateFinReservation), is( montant ));
+		Interval interval = new Interval(dateDebutReservation, dateFinReservation);
+		
+		assertThat(calc.calculerPrixLocation(unBien, interval), is( montant ));
 	}
 	
 	
