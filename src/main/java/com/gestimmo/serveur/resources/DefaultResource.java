@@ -2,11 +2,7 @@ package com.gestimmo.serveur.resources;
 
 import com.gestimmo.serveur.processes.TemplateRepresentation;
 import org.restlet.representation.Representation;
-import org.restlet.resource.Get;
-import org.restlet.resource.Post;
-import org.restlet.resource.Put;
-import org.restlet.resource.Delete;
-import org.restlet.resource.ServerResource;
+import org.restlet.resource.*;
 
 public class DefaultResource extends ServerResource {
 

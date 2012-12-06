@@ -1,21 +1,15 @@
 package com.gestimmo.metier.model;
 
 import com.gestimmo.metier.exceptions.AppliDataException;
-
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.Iterator;
-import java.util.Map;
-
 import org.joda.time.DateTime;
 import org.joda.time.Days;
 import org.joda.time.Interval;
 
-public class Bien {
-//	Chateau,
-//	Taudis,
-//	CabaneAuFondDuJardin;
+import java.util.ArrayList;
 
+public class Bien {
+
+	private int id;
 	private double surface;
 	private char energie;
 	private String adresse;
@@ -24,12 +18,29 @@ public class Bien {
 	private int tailleGarage;
 	private int nbPieces;
 	private int tailleVeranda;
-	
 	private ArrayList<Periode> periodes = new ArrayList<Periode>();
-	
+	private Type type;
 
-	public void setSurface(double nouveleSurface) {
-		surface = nouveleSurface;
+	public int getId() {
+		return id;
+	}
+
+	public void setId(int nouvelId) {
+		id = nouvelId;
+	}
+
+	public Type getType() {
+		return type;
+	}
+
+	public void setType(Type nouveauType) {
+		type = nouveauType;
+	}
+
+	public void setSurface(double nouvelleSurface) throws AppliDataException {
+		if (nouvelleSurface <= 0)
+			throw new AppliDataException("Surface non conforme.");
+		surface = nouvelleSurface;
 	}
 
 	public double getSurface() {
@@ -37,7 +48,15 @@ public class Bien {
 	}
 
 	public void setEnergie(char nouvelleEnergie) throws AppliDataException {
-		ArrayList<String> energiesValides = new ArrayList<String>() {{add("A"); add("B"); add("C"); add("D"); add("E"); add("F"); add("G");}};
+		ArrayList<String> energiesValides = new ArrayList<String>() {{
+			add("A");
+			add("B");
+			add("C");
+			add("D");
+			add("E");
+			add("F");
+			add("G");
+		}};
 
 		if (!energiesValides.contains(String.valueOf(nouvelleEnergie)))
 			throw new AppliDataException("Energie non valide.");
@@ -50,15 +69,19 @@ public class Bien {
 
 	public void setAdresse(String nouvelleAdresse) {
 		adresse = nouvelleAdresse;
-		
 	}
 
 	public String getAdresse() {
 		return adresse;
 	}
 
+<<<<<<< HEAD
 	public void setCodePostal(String nouveauCodePostal) {
 		 codePostal = nouveauCodePostal;
+=======
+	public void setCodePostale(String nouveauCodePostal) {
+		codePostal = nouveauCodePostal;
+>>>>>>> b51ab2cb995e2d6e331fd7d21dea7164b33921b4
 	}
 
 	public String getCodePostal() {
@@ -84,34 +107,45 @@ public class Bien {
 		return nbPieces;
 	}
 
+<<<<<<< HEAD
 	public void setTailleGarage(int nouvelleTailleGarage) {
+=======
+	public void setGarage(int nouvelleTailleGarage) throws AppliDataException {
+		if (nouvelleTailleGarage < 0) {
+			throw new AppliDataException("le nombre de metre carre pour le garage est invalide");
+		}
+>>>>>>> b51ab2cb995e2d6e331fd7d21dea7164b33921b4
 		tailleGarage = nouvelleTailleGarage;
-		
 	}
 
 	public Integer getTailleGarage() {
 		return tailleGarage;
 	}
 
+<<<<<<< HEAD
 	public void setTailleVeranda(int nouvelleTailleVeranda) {
+=======
+	public void setVeranda(int nouvelleTailleVeranda) throws AppliDataException {
+		if (nouvelleTailleVeranda < 0) {
+			throw new AppliDataException("le nombre de metre carre pour la veranda est invalide");
+		}
+>>>>>>> b51ab2cb995e2d6e331fd7d21dea7164b33921b4
 		tailleVeranda = nouvelleTailleVeranda;
-		
 	}
 
 	public Integer getTailleVeranda() {
 		return tailleVeranda;
 	}
 
-	public Periode getPeriode(int id) {
+	public Periode getPeriode(int idPeriode) {
 		Periode periodeARetourner = null;
-		for (Periode p : periodes) {
-			if ( p.getId() == id ) {
-				periodeARetourner = p;
+		for (Periode unePeriode : periodes) {
+			if (unePeriode.getId() == idPeriode) {
+				periodeARetourner = unePeriode;
 			}
 		}
-		
+
 		return periodeARetourner;
-		
 	}
 
 	public ArrayList<Periode> getPeriodes() {
@@ -122,11 +156,32 @@ public class Bien {
 		periodes.add(nouvellePeriode);
 	}
 
-	public void ajouterPeriodes(ArrayList<Periode> listePeriodes) {
+	public void setPeriodes(ArrayList<Periode> listePeriodes) {
 		periodes = listePeriodes;
 	}
 
+<<<<<<< HEAD
 	
 	
 	
+=======
+	public double calculerPrixLocation(DateTime dateDebutReservation, DateTime dateFinReservation) {
+		double prixARetourner = 0;
+		int totalJour;
+
+		Interval intervalReservation = new Interval(dateDebutReservation, dateFinReservation);
+		Interval intervalEntrePeriode, intervalDates;
+
+		for (Periode p : periodes) {
+			intervalDates = new Interval(p.getDateDebut(), p.getDateFin());
+
+			if ((intervalEntrePeriode = intervalDates.overlap(intervalReservation)) != null) {
+				totalJour = Days.daysBetween(intervalEntrePeriode.getStart().toDateMidnight(), intervalEntrePeriode.getEnd().toDateMidnight()).getDays();
+				prixARetourner += totalJour * p.getMontant();
+			}
+		}
+
+		return prixARetourner;
+	}
+>>>>>>> b51ab2cb995e2d6e331fd7d21dea7164b33921b4
 }

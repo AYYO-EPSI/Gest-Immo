@@ -1,5 +1,6 @@
 package metier;
 
+<<<<<<< HEAD
 import static org.hamcrest.CoreMatchers.instanceOf;
 import static org.hamcrest.CoreMatchers.is;
 import static org.hamcrest.CoreMatchers.notNullValue;
@@ -14,38 +15,60 @@ import org.joda.time.Days;
 import org.joda.time.Interval;
 
 
+=======
+>>>>>>> b51ab2cb995e2d6e331fd7d21dea7164b33921b4
 import com.gestimmo.metier.exceptions.AppliDataException;
 import com.gestimmo.metier.model.Bien;
 import com.gestimmo.metier.model.Calculateur;
 import com.gestimmo.metier.model.Periode;
-
+import com.gestimmo.metier.model.Type;
 import junit.framework.TestCase;
 import junit.framework.TestSuite;
+import org.joda.time.DateTime;
+import org.joda.time.Days;
+
+import java.util.ArrayList;
+
+import static org.hamcrest.CoreMatchers.*;
+import static org.hamcrest.MatcherAssert.assertThat;
 
 public class testBien extends TestCase {
+<<<<<<< HEAD
 	 Bien unBien;
 	 Calculateur calc;
 	 
+=======
+	Bien unBien;
+
+>>>>>>> b51ab2cb995e2d6e331fd7d21dea7164b33921b4
 	public static TestSuite suite() {
 		return new TestSuite(testBien.class);
 	}
 
-	public void setUp(){
-//		unBien = Bien.CabaneAuFondDuJardin;
+	public void setUp() {
 		unBien = new Bien();
 		calc = new Calculateur();
 	}
 
 	public void testObjetExisteetPasNul() {
-		assertThat(unBien, is(allOf(instanceOf(Bien.class),notNullValue(Bien.class))));
+		assertThat(unBien, is(allOf(instanceOf(Bien.class), notNullValue(Bien.class))));
 	}
-	
-	public void testSurface (){
-	  unBien.setSurface(40.00);
-	  assertThat(unBien.getSurface(), is(40.00));
+
+	public void testSurface() {
+		unBien.setSurface(40.00);
+		assertThat(unBien.getSurface(), is(40.00));
 	}
-	
-	public void testEnergie(){
+
+	public void testSurfaceInferieurOuEgale0() {
+		try {
+			unBien.setSurface(-1);
+			fail("Impossible d'avoir une surface inferieur ou �gale � 0");
+		} catch (AppliDataException e) {
+		}
+	}
+
+
+	public void testEnergie() {
 		unBien.setEnergie('A');
 		assertThat(unBien.getEnergie(), is('A'));
 	}
@@ -57,27 +80,27 @@ public class testBien extends TestCase {
 		} catch (AppliDataException e) {
 		}
 	}
-	
-	public void testAdresse(){
+
+	public void testAdresse() {
 		unBien.setAdresse("adresse");
 		assertThat(unBien.getAdresse(), is("adresse"));
 	}
-	
-	public void testCodePostale(){
+
+	public void testCodePostale() {
 		unBien.setCodePostale("64600");
 		assertThat(unBien.getCodePostale(), is("64600"));
 	}
-	
-	public void testVille(){
+
+	public void testVille() {
 		unBien.setVille("AngletCityBitch");
 		assertThat(unBien.getVille(), is("AngletCityBitch"));
 	}
-	
-	public void testNbPieces(){
+
+	public void testNbPieces() {
 		unBien.setNbPieces(1);
 		assertThat(unBien.getNbPieces(), is(1));
 	}
-	
+
 	public void testNbPiecesPas0() {
 		try {
 			unBien.setNbPieces(0);
@@ -85,37 +108,55 @@ public class testBien extends TestCase {
 		} catch (AppliDataException e) {
 		}
 	}
-	
+
 	public void testGarage() {
 		unBien.setTailleGarage(10);
 		assertThat(unBien.getGarage(), is(10));
 	}
-	
+
+	public void testGarageinf0() {
+		try {
+			unBien.setGarage(-1);
+			fail("valeur surface garage non valide car inferieur � 0");
+		} catch (AppliDataException e) {
+
+		}
+	}
+
 	public void testVeranda() {
 		unBien.setVeranda(20);
-		assertThat(unBien.getVeranda(),is(20));
+		assertThat(unBien.getVeranda(), is(20));
 	}
-	
-	public void testAjoutPeriode(){
+
+	public void testTailleVeranda() {
+		try {
+			unBien.setVeranda(-5);
+			fail("valeur surface veranda non valide car inferieur � 0");
+		} catch (AppliDataException e) {
+
+		}
+	}
+
+	public void testAjoutPeriode() {
 		unBien.ajouterPeriode(new Periode());
-		assertThat(unBien.getPeriodes().size(),is(1));
+		assertThat(unBien.getPeriodes().size(), is(1));
 	}
-	
-	public void testAjoutPeriodes(){
+
+	public void testAjoutPeriodes() {
 		ArrayList<Periode> periodes = new ArrayList();
 		periodes.add(new Periode());
 		periodes.add(new Periode());
-		
-		unBien.ajouterPeriodes(periodes);
-		assertThat(unBien.getPeriodes().size(),is(2));
+
+		unBien.setPeriodes(periodes);
+		assertThat(unBien.getPeriodes().size(), is(2));
 	}
-	
-	public void testUnePeriode(){
-		Periode p = new Periode( 1 );
-		unBien.ajouterPeriode( p );
-		assertThat(unBien.getPeriode( 1 ).getId(),is( 1 ));
+
+	public void testUnePeriode() {
+		Periode p = new Periode(1);
+		unBien.ajouterPeriode(p);
+		assertThat(unBien.getPeriode(1).getId(), is(1));
 	}
-	
+
 	public void testCalculerPrixPourUnInterval() {
 		Periode periode = new Periode(1);
 		periode.setDateDebut(new DateTime(2012, 1, 1, 0, 0));
@@ -124,13 +165,18 @@ public class testBien extends TestCase {
 
 		DateTime dateDebutReservation = new DateTime(2012, 1, 15, 0, 0);
 		DateTime dateFinReservation = new DateTime(2012, 2, 15, 0, 0);
-		
+
 		unBien.ajouterPeriode(periode);
+<<<<<<< HEAD
 		Interval interval = new Interval(dateDebutReservation, dateFinReservation);
 		
 		assertThat(calc.calculerPrixLocation(unBien, interval), is(periode.getMontant() * ( Days.daysBetween(dateDebutReservation.toDateMidnight(), dateFinReservation.toDateMidnight()).getDays() )));
+=======
+
+		assertThat(unBien.calculerPrixLocation(dateDebutReservation, dateFinReservation), is(periode.getMontant() * (Days.daysBetween(dateDebutReservation.toDateMidnight(), dateFinReservation.toDateMidnight()).getDays())));
+>>>>>>> b51ab2cb995e2d6e331fd7d21dea7164b33921b4
 	}
-	
+
 	public void testCalculerPrixPourPlusieursIntervales() {
 		Periode periode1 = new Periode(1);
 		periode1.setDateDebut(new DateTime(2012, 1, 1, 0, 0));
@@ -153,18 +199,25 @@ public class testBien extends TestCase {
 		unBien.ajouterPeriode(periode1);
 		unBien.ajouterPeriode(periode2);
 		unBien.ajouterPeriode(periode3);
-		
+
 		double montant = periode1.getMontant() * 16;
 		montant += periode2.getMontant() * 28;
 		montant += periode3.getMontant() * 14;
+<<<<<<< HEAD
 		
 		Interval interval = new Interval(dateDebutReservation, dateFinReservation);
 		
 		assertThat(calc.calculerPrixLocation(unBien, interval), is( montant ));
+=======
+
+		assertThat(unBien.calculerPrixLocation(dateDebutReservation, dateFinReservation), is(montant));
+>>>>>>> b51ab2cb995e2d6e331fd7d21dea7164b33921b4
 	}
-	
-	
-	
+
+	   public void testType() {
+			unBien.setType(Type.Chateau);
+			assertThat(unBien.getType(), is(Type.Chateau));
+	   }
 }
 
 	
