@@ -16,7 +16,7 @@ public class BienResource extends ServerResource {
 	public Representation voir() {
 		bienProcessus.creerBien();
 
-		int idBien = (Integer) getRequest().getAttributes().get("bienId");
+		int idBien = Integer.parseInt((String) getRequest().getAttributes().get("bienId"));
 
 		Map<String, Object> donnees = new HashMap<String, Object>();
 		donnees.put("pageTitle", "Voir un bien !!!");
