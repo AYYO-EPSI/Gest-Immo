@@ -8,7 +8,7 @@
     <meta charset="utf-8">
     <title>${pageTitle}</title>
 
-    <link rel="stylesheet" href="styles/master.css">
+    <link rel="stylesheet" href="/styles/master.css">
 
     <!--[if lt IE 9]>
     <script src="/js/html5shiv.js"></script>
