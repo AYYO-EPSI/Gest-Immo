@@ -1,8 +1,7 @@
 package com.gestimmo.serveur.resources;
 
-import com.gestimmo.metier.dao.BienDao;
-import com.gestimmo.metier.model.Bien;
 import com.gestimmo.serveur.processes.TemplateRepresentation;
+import com.gestimmo.serveur.webProcessus.BienProcessus;
 import org.restlet.representation.Representation;
 import org.restlet.resource.*;
 
@@ -11,44 +10,35 @@ import java.util.Map;
 
 public class BienResource extends ServerResource {
 
-	private final BienDao bienDao = new BienDao();
+	private final BienProcessus bienProcessus = new BienProcessus();
 
 	@Get
 	public Representation voir() {
-		Bien tt = new Bien();
-			tt.setEnergie('A');
-			tt.setAdresse("Adresse");
-			tt.setCodePostal("CodePostal");
-			tt.setNbPieces(666);
-			tt.setSurface(666);
-			tt.setTailleGarage(0);
-			tt.setTailleVeranda(0);
-			tt.setVille("CorsicaCityBeach");
+		bienProcessus.creerBien();
 
-		bienDao.saveOrUpdate(tt);
+		int idBien = (Integer) getRequest().getAttributes().get("bienId");
 
-		int idBien = Integer.parseInt((String) getRequest().getAttributes().get("bienId"));
-
-		String title = "Voir un bien !!!";
-		Bien unBien = (Bien)bienDao.find(Bien.class, idBien);
 		Map<String, Object> donnees = new HashMap<String, Object>();
-		donnees.put("pageTitle", title);
-		donnees.put("bien", unBien);
+		donnees.put("pageTitle", "Voir un bien !!!");
+		donnees.put("bien", bienProcessus.getUnBien(idBien));
 
-		return TemplateRepresentation.createNew("voirBien.ftl", getContext()).with( donnees );
+		return TemplateRepresentation.createNew("voirBien.ftl", getContext()).with(donnees);
 	}
+
 	@Post
 	public Representation mettreAjour() {
 		String title = "MaJ du bien !!!";
 
 		return TemplateRepresentation.createNew("index.ftl", getContext()).with("pageTitle", title);
 	}
+
 	@Put
 	public Representation creer() {
 		String title = "Page des biens !!!";
 
 		return TemplateRepresentation.createNew("index.ftl", getContext()).with("pageTitle", title);
 	}
+
 	@Delete
 	public Representation supprimer() {
 		String title = "Page des biens !!!";

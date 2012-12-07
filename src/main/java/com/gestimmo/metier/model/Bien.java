@@ -73,7 +73,7 @@ public class Bien {
 	}
 
 	public void setCodePostal(String nouveauCodePostal) {
-		 codePostal = nouveauCodePostal;
+		codePostal = nouveauCodePostal;
 	}
 
 	public String getCodePostal() {
@@ -109,7 +109,7 @@ public class Bien {
 		return tailleGarage;
 	}
 
-	public void setTailleVeranda(int nouvelleTailleVeranda)  throws AppliDataException {
+	public void setTailleVeranda(int nouvelleTailleVeranda) throws AppliDataException {
 		if (nouvelleTailleVeranda < 0) {
 			throw new AppliDataException("le nombre de metre carre pour la veranda est invalide");
 		}
