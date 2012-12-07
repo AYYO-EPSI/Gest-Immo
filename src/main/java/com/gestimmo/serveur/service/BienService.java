@@ -1,10 +1,11 @@
-package com.gestimmo.serveur.webProcessus;
+package com.gestimmo.serveur.service;
 
-import com.gestimmo.metier.dao.BienDao;
+import com.gestimmo.metier.dao.DaoFactory;
+import com.gestimmo.metier.dao.GenericDAO;
 import com.gestimmo.metier.model.Bien;
 
-public class BienProcessus {
-	private final BienDao bienDao = new BienDao();
+public class BienService {
+	private final GenericDAO bienDao = DaoFactory.getBienDAO();
 
 	public void creerBien() {
 		Bien tt = new Bien();

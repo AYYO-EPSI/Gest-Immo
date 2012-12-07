@@ -1,7 +1,7 @@
 package com.gestimmo.serveur.resources;
 
 import com.gestimmo.serveur.processes.TemplateRepresentation;
-import com.gestimmo.serveur.webProcessus.BienProcessus;
+import com.gestimmo.serveur.service.BienService;
 import org.restlet.representation.Representation;
 import org.restlet.resource.*;
 
@@ -10,7 +10,7 @@ import java.util.Map;
 
 public class BienResource extends ServerResource {
 
-	private final BienProcessus bienProcessus = new BienProcessus();
+	private final BienService bienProcessus = new BienService();
 
 	@Get
 	public Representation voir() {
