@@ -11,8 +11,8 @@ import org.restlet.routing.Filter;
 
 public class HandlerHibernate extends Filter {
 
-	Session session;
-	Transaction transactionEncours;
+	private Session session;
+	private Transaction transactionEncours;
 
 	public HandlerHibernate(final Context context) {
 		super(context);

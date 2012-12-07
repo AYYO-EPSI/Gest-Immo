@@ -10,7 +10,8 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class BienResource extends ServerResource {
-BienDao bienDao = new BienDao();
+
+	private final BienDao bienDao = new BienDao();
 
 	@Get
 	public Representation voir() {
