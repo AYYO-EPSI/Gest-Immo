@@ -1,22 +1,5 @@
 package metier;
 
-<<<<<<< HEAD
-import static org.hamcrest.CoreMatchers.instanceOf;
-import static org.hamcrest.CoreMatchers.is;
-import static org.hamcrest.CoreMatchers.notNullValue;
-import static org.hamcrest.MatcherAssert.assertThat;
-import static org.hamcrest.CoreMatchers.allOf;
-
-import java.util.ArrayList;
-
-import org.hamcrest.core.IsNot;
-import org.joda.time.DateTime;
-import org.joda.time.Days;
-import org.joda.time.Interval;
-
-
-=======
->>>>>>> b51ab2cb995e2d6e331fd7d21dea7164b33921b4
 import com.gestimmo.metier.exceptions.AppliDataException;
 import com.gestimmo.metier.model.Bien;
 import com.gestimmo.metier.model.Calculateur;
@@ -26,6 +9,7 @@ import junit.framework.TestCase;
 import junit.framework.TestSuite;
 import org.joda.time.DateTime;
 import org.joda.time.Days;
+import org.joda.time.Interval;
 
 import java.util.ArrayList;
 
@@ -33,14 +17,10 @@ import static org.hamcrest.CoreMatchers.*;
 import static org.hamcrest.MatcherAssert.assertThat;
 
 public class testBien extends TestCase {
-<<<<<<< HEAD
+
 	 Bien unBien;
 	 Calculateur calc;
-	 
-=======
-	Bien unBien;
 
->>>>>>> b51ab2cb995e2d6e331fd7d21dea7164b33921b4
 	public static TestSuite suite() {
 		return new TestSuite(testBien.class);
 	}
@@ -87,8 +67,8 @@ public class testBien extends TestCase {
 	}
 
 	public void testCodePostale() {
-		unBien.setCodePostale("64600");
-		assertThat(unBien.getCodePostale(), is("64600"));
+		unBien.setCodePostal("64600");
+		assertThat(unBien.getCodePostal(), is("64600"));
 	}
 
 	public void testVille() {
@@ -111,27 +91,27 @@ public class testBien extends TestCase {
 
 	public void testGarage() {
 		unBien.setTailleGarage(10);
-		assertThat(unBien.getGarage(), is(10));
+		assertThat(unBien.getTailleGarage(), is(10));
 	}
 
 	public void testGarageinf0() {
 		try {
-			unBien.setGarage(-1);
-			fail("valeur surface garage non valide car inferieur � 0");
+			unBien.setTailleGarage(-1);
+			fail("valeur surface garage non valide car inferieur a 0");
 		} catch (AppliDataException e) {
 
 		}
 	}
 
 	public void testVeranda() {
-		unBien.setVeranda(20);
-		assertThat(unBien.getVeranda(), is(20));
+		unBien.setTailleVeranda(20);
+		assertThat(unBien.getTailleVeranda(), is(20));
 	}
 
 	public void testTailleVeranda() {
 		try {
-			unBien.setVeranda(-5);
-			fail("valeur surface veranda non valide car inferieur � 0");
+			unBien.setTailleVeranda(-5);
+			fail("valeur surface veranda non valide car inferieur a 0");
 		} catch (AppliDataException e) {
 
 		}
@@ -143,7 +123,7 @@ public class testBien extends TestCase {
 	}
 
 	public void testAjoutPeriodes() {
-		ArrayList<Periode> periodes = new ArrayList();
+		ArrayList<Periode> periodes = new ArrayList<Periode>();
 		periodes.add(new Periode());
 		periodes.add(new Periode());
 
@@ -167,14 +147,9 @@ public class testBien extends TestCase {
 		DateTime dateFinReservation = new DateTime(2012, 2, 15, 0, 0);
 
 		unBien.ajouterPeriode(periode);
-<<<<<<< HEAD
 		Interval interval = new Interval(dateDebutReservation, dateFinReservation);
 		
 		assertThat(calc.calculerPrixLocation(unBien, interval), is(periode.getMontant() * ( Days.daysBetween(dateDebutReservation.toDateMidnight(), dateFinReservation.toDateMidnight()).getDays() )));
-=======
-
-		assertThat(unBien.calculerPrixLocation(dateDebutReservation, dateFinReservation), is(periode.getMontant() * (Days.daysBetween(dateDebutReservation.toDateMidnight(), dateFinReservation.toDateMidnight()).getDays())));
->>>>>>> b51ab2cb995e2d6e331fd7d21dea7164b33921b4
 	}
 
 	public void testCalculerPrixPourPlusieursIntervales() {
@@ -203,15 +178,8 @@ public class testBien extends TestCase {
 		double montant = periode1.getMontant() * 16;
 		montant += periode2.getMontant() * 28;
 		montant += periode3.getMontant() * 14;
-<<<<<<< HEAD
 		
-		Interval interval = new Interval(dateDebutReservation, dateFinReservation);
-		
-		assertThat(calc.calculerPrixLocation(unBien, interval), is( montant ));
-=======
-
-		assertThat(unBien.calculerPrixLocation(dateDebutReservation, dateFinReservation), is(montant));
->>>>>>> b51ab2cb995e2d6e331fd7d21dea7164b33921b4
+		assertThat(calc.calculerPrixLocation(unBien, new Interval(dateDebutReservation, dateFinReservation)), is( montant ));
 	}
 
 	   public void testType() {

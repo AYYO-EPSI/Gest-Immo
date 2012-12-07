@@ -1,14 +1,13 @@
 package com.gestimmo.serveur.resources;
 
-import java.util.HashMap;
-import java.util.Map;
-
 import com.gestimmo.metier.dao.BienDao;
 import com.gestimmo.metier.model.Bien;
 import com.gestimmo.serveur.processes.TemplateRepresentation;
 import org.restlet.representation.Representation;
-import org.restlet.resource.Get;
-import org.restlet.resource.ServerResource;
+import org.restlet.resource.*;
+
+import java.util.HashMap;
+import java.util.Map;
 
 public class BienResource extends ServerResource {
 BienDao bienDao = new BienDao();

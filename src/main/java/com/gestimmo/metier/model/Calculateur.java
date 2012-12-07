@@ -1,11 +1,10 @@
 package com.gestimmo.metier.model;
 
-import java.util.HashMap;
-import java.util.Map;
-
-import org.joda.time.DateTime;
 import org.joda.time.Days;
 import org.joda.time.Interval;
+
+import java.util.HashMap;
+import java.util.Map;
 
 public class Calculateur {
 	public double calculerPrixLocation(Bien bien, Interval datesReservation) {

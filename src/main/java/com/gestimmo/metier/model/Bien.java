@@ -1,9 +1,6 @@
 package com.gestimmo.metier.model;
 
 import com.gestimmo.metier.exceptions.AppliDataException;
-import org.joda.time.DateTime;
-import org.joda.time.Days;
-import org.joda.time.Interval;
 
 import java.util.ArrayList;
 
@@ -75,19 +72,13 @@ public class Bien {
 		return adresse;
 	}
 
-<<<<<<< HEAD
 	public void setCodePostal(String nouveauCodePostal) {
 		 codePostal = nouveauCodePostal;
-=======
-	public void setCodePostale(String nouveauCodePostal) {
-		codePostal = nouveauCodePostal;
->>>>>>> b51ab2cb995e2d6e331fd7d21dea7164b33921b4
 	}
 
 	public String getCodePostal() {
 		return codePostal;
 	}
-	
 
 	public void setVille(String nouvelleVille) {
 		ville = nouvelleVille;
@@ -103,37 +94,29 @@ public class Bien {
 		nbPieces = nombreDePiece;
 	}
 
-	public Integer getNbPieces() {
+	public int getNbPieces() {
 		return nbPieces;
 	}
 
-<<<<<<< HEAD
-	public void setTailleGarage(int nouvelleTailleGarage) {
-=======
-	public void setGarage(int nouvelleTailleGarage) throws AppliDataException {
+	public void setTailleGarage(int nouvelleTailleGarage) throws AppliDataException {
 		if (nouvelleTailleGarage < 0) {
 			throw new AppliDataException("le nombre de metre carre pour le garage est invalide");
 		}
->>>>>>> b51ab2cb995e2d6e331fd7d21dea7164b33921b4
 		tailleGarage = nouvelleTailleGarage;
 	}
 
-	public Integer getTailleGarage() {
+	public int getTailleGarage() {
 		return tailleGarage;
 	}
 
-<<<<<<< HEAD
-	public void setTailleVeranda(int nouvelleTailleVeranda) {
-=======
-	public void setVeranda(int nouvelleTailleVeranda) throws AppliDataException {
+	public void setTailleVeranda(int nouvelleTailleVeranda)  throws AppliDataException {
 		if (nouvelleTailleVeranda < 0) {
 			throw new AppliDataException("le nombre de metre carre pour la veranda est invalide");
 		}
->>>>>>> b51ab2cb995e2d6e331fd7d21dea7164b33921b4
 		tailleVeranda = nouvelleTailleVeranda;
 	}
 
-	public Integer getTailleVeranda() {
+	public int getTailleVeranda() {
 		return tailleVeranda;
 	}
 
@@ -159,29 +142,4 @@ public class Bien {
 	public void setPeriodes(ArrayList<Periode> listePeriodes) {
 		periodes = listePeriodes;
 	}
-
-<<<<<<< HEAD
-	
-	
-	
-=======
-	public double calculerPrixLocation(DateTime dateDebutReservation, DateTime dateFinReservation) {
-		double prixARetourner = 0;
-		int totalJour;
-
-		Interval intervalReservation = new Interval(dateDebutReservation, dateFinReservation);
-		Interval intervalEntrePeriode, intervalDates;
-
-		for (Periode p : periodes) {
-			intervalDates = new Interval(p.getDateDebut(), p.getDateFin());
-
-			if ((intervalEntrePeriode = intervalDates.overlap(intervalReservation)) != null) {
-				totalJour = Days.daysBetween(intervalEntrePeriode.getStart().toDateMidnight(), intervalEntrePeriode.getEnd().toDateMidnight()).getDays();
-				prixARetourner += totalJour * p.getMontant();
-			}
-		}
-
-		return prixARetourner;
-	}
->>>>>>> b51ab2cb995e2d6e331fd7d21dea7164b33921b4
 }
