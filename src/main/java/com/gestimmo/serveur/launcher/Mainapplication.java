@@ -27,7 +27,7 @@ public class Mainapplication extends Application {
 		attachRessources(router);
 
 		router.attachDefault(DefaultResource.class);
-		hibernateHandling(router, "/bien", BienResource.class);
+		hibernateHandling(router, "/bien/{bienId}", BienResource.class);
 
 		return router;
 	}

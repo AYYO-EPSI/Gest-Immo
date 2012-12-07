@@ -39,7 +39,7 @@ public abstract class GenericDAO {
 		Object obj = null;
 
 		try {
-			obj = session.load(clazz, objetId);
+			obj = session.get(clazz, objetId);
 		} catch (final HibernateException e) {
 			throwException(e);
 		}

@@ -14,20 +14,5 @@
         <property name="tailleGarage" column="bien_tailleGarage" type="integer" not-null="false" />
         <property name="nbPieces" column="bien_nbPieces" type="integer" not-null="true" />
         <property name="tailleVeranda" column="bien_tailleVeranda" type="integer" not-null="false" />
-        
-        
-    <!--     
-     <many-to-one name="annonceur" class="Recruteur" column="ann_idAnnonceur" cascade="delete" />
-        
-        <set name="cvFavoris" table="cvfavoris">
-            <key column="cvfav_annId" not-null="true" />
-            <many-to-many class="CV" column="cvfav_cvId" />
-        </set>
-        
-        <set name="competencesRecherchees" table="competencesrecherchees">
-            <key column="cptr_annId" not-null="true" />
-            <many-to-many class="Competence" column="cptr_compId" />
-        </set>
-         -->
     </class>
 </hibernate-mapping>

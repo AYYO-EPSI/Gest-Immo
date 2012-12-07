@@ -24,13 +24,17 @@ public class BienResource extends ServerResource {
 			tt.setTailleGarage(0);
 			tt.setTailleVeranda(0);
 			tt.setVille("CorsicaCityBeach");
-			
+
 		bienDao.saveOrUpdate(tt);
+
+		int idBien = Integer.parseInt((String) getRequest().getAttributes().get("bienId"));
+
 		String title = "Voir un bien !!!";
-		Bien unBien = (Bien)bienDao.find(Bien.class, 1);
+		Bien unBien = (Bien)bienDao.find(Bien.class, idBien);
 		Map<String, Object> donnees = new HashMap<String, Object>();
 		donnees.put("pageTitle", title);
 		donnees.put("bien", unBien);
+
 		return TemplateRepresentation.createNew("voirBien.ftl", getContext()).with( donnees );
 	}
 	@Post
