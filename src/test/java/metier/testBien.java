@@ -1,10 +1,7 @@
 package metier;
 
 import com.gestimmo.metier.exceptions.AppliDataException;
-import com.gestimmo.metier.model.Bien;
-import com.gestimmo.metier.model.Calculateur;
-import com.gestimmo.metier.model.Periode;
-import com.gestimmo.metier.model.Type;
+import com.gestimmo.metier.model.*;
 import junit.framework.TestCase;
 import junit.framework.TestSuite;
 import org.joda.time.DateTime;
@@ -186,6 +183,27 @@ public class testBien extends TestCase {
 			unBien.setType(Type.Chateau);
 			assertThat(unBien.getType(), is(Type.Chateau));
 	   }
+
+	public void testAjoutLocation() {
+		unBien.ajouterPeriode(new Periode());
+		assertThat(unBien.getPeriodes().size(), is(1));
+	}
+
+	public void testAjoutlocations() {
+		ArrayList<Location> loc = new ArrayList<Location>();
+		loc.add(new Location());
+		loc.add(new Location());
+
+		unBien.setLocations(loc);
+		assertThat(unBien.getLocations().size(), is(2));
+	}
+
+	public void testUneLocation() {
+		Location loc = new Location();
+		loc.setId(1);
+		unBien.ajouterLocation(loc);
+		assertThat(unBien.getLocation(1).getId(), is(1));
+	}
 }
 
 	

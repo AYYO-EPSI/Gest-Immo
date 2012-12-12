@@ -16,6 +16,7 @@ public class Bien {
 	private int nbPieces;
 	private int tailleVeranda;
 	private ArrayList<Periode> periodes = new ArrayList<Periode>();
+	private ArrayList<Location> locations = new ArrayList<Location>();
 	private Type type;
 
 	public int getId() {
@@ -135,11 +136,34 @@ public class Bien {
 		return periodes;
 	}
 
+	public Location getLocation(int idLocation) {
+		Location locationARetourner = null;
+		for (Location uneLocation : locations) {
+			if (uneLocation.getId() == idLocation) {
+				locationARetourner = uneLocation;
+			}
+		}
+
+		return locationARetourner;
+	}
+
 	public void ajouterPeriode(Periode nouvellePeriode) {
 		periodes.add(nouvellePeriode);
 	}
 
 	public void setPeriodes(ArrayList<Periode> listePeriodes) {
 		periodes = listePeriodes;
+	}
+
+	public ArrayList<Location> getLocations() {
+		return locations;
+	}
+
+	public void ajouterLocation(Location nouvelleLoc) {
+		locations.add(nouvelleLoc);
+	}
+
+	public void setLocations(ArrayList<Location> listeLocations) {
+		locations = listeLocations;
 	}
 }
