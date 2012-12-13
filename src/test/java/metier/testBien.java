@@ -136,8 +136,7 @@ public class testBien extends TestCase {
 
 	public void testCalculerPrixPourUnInterval() {
 		Periode periode = new Periode(1);
-		periode.setDateDebut(new DateTime(2012, 1, 1, 0, 0));
-		periode.setDateFin(new DateTime(2012, 12, 31, 0, 0));
+		periode.setPeriode(new Interval(new DateTime(2012, 1, 1, 0, 0), new DateTime(2012, 12, 31, 0, 0)));
 		periode.setMontant(85);
 
 		DateTime dateDebutReservation = new DateTime(2012, 1, 15, 0, 0);
@@ -151,18 +150,15 @@ public class testBien extends TestCase {
 
 	public void testCalculerPrixPourPlusieursIntervales() {
 		Periode periode1 = new Periode(1);
-		periode1.setDateDebut(new DateTime(2012, 1, 1, 0, 0));
-		periode1.setDateFin(new DateTime(2012, 1, 31, 0, 0));
+		periode1.setPeriode(new Interval(new DateTime(2012, 1, 1, 0, 0), new DateTime(2012, 1, 31, 0, 0)));
 		periode1.setMontant(25);
 
 		Periode periode2 = new Periode(2);
-		periode2.setDateDebut(new DateTime(2012, 2, 1, 0, 0));
-		periode2.setDateFin(new DateTime(2012, 2, 29, 0, 0));
+		periode2.setPeriode(new Interval(new DateTime(2012, 2, 1, 0, 0), new DateTime(2012, 2, 29, 0, 0)));
 		periode2.setMontant(15);
 
 		Periode periode3 = new Periode(3);
-		periode3.setDateDebut(new DateTime(2012, 3, 1, 0, 0));
-		periode3.setDateFin(new DateTime(2012, 3, 31, 0, 0));
+		periode3.setPeriode(new Interval(new DateTime(2012, 3, 1, 0, 0), new DateTime(2012, 3, 31, 0, 0)));
 		periode3.setMontant(85);
 
 		DateTime dateDebutReservation = new DateTime(2012, 1, 15, 0, 0);

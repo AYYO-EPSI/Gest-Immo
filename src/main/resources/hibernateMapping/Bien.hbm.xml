@@ -14,5 +14,10 @@
         <property name="tailleGarage" column="bien_tailleGarage" type="integer" not-null="false" />
         <property name="nbPieces" column="bien_nbPieces" type="integer" not-null="true" />
         <property name="tailleVeranda" column="bien_tailleVeranda" type="integer" not-null="false" />
+
+        <bag name="periodes" table="periode" cascade="delete" order-by="periode_id">
+            <key column="periode_idBien" not-null="true" />
+            <one-to-many class="Periode" />
+        </bag>
     </class>
 </hibernate-mapping>

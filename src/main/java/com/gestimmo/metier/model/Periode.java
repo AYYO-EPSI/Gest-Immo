@@ -1,21 +1,31 @@
 package com.gestimmo.metier.model;
 
 import com.gestimmo.metier.exceptions.AppliDataException;
-import org.joda.time.DateTime;
+import org.joda.time.Interval;
 
 public class Periode {
 
+	private int id;
 	private String libelle;
 	private double montant;
-	private DateTime dateDebut;
-	private DateTime dateFin;
-	private int id;
+	private Interval periode;
+	/*private DateTime dateDebut;
+	private DateTime dateFin;*/
+
 
 	public Periode() {
 	}
 
 	public Periode(int indice) {
 		id = indice;
+	}
+
+	public int getId() {
+		return id;
+	}
+
+	public void setId(int nouvelId) {
+		id = nouvelId;
 	}
 
 	public void setLibelle(String nouveauLibelle) {
@@ -34,36 +44,15 @@ public class Periode {
 		montant = nouveauMontant;
 	}
 
-	public Double getMontant() {
+	public double getMontant() {
 		return montant;
 	}
 
-	public void setDateDebut(DateTime nouvelleDateDebut) throws AppliDataException {
-		if (dateFin != null && nouvelleDateDebut.isAfter(dateFin)) {
-			throw new AppliDataException("La date de debut doit etre inferieure a la date de fin de periode");
-		}
-
-		dateDebut = nouvelleDateDebut;
+	public Interval getPeriode() {
+		return periode;
 	}
 
-	public DateTime getDateDebut() {
-		return dateDebut;
+	public void setPeriode(Interval nouvellePeriode) {
+		periode = nouvellePeriode;
 	}
-
-	public void setDateFin(DateTime nouvelleDateFin) throws AppliDataException {
-		if (dateDebut != null && nouvelleDateFin.isBefore(dateDebut)) {
-			throw new AppliDataException("La date de fin doit etre superieure a la date de debut de periode");
-		}
-
-		dateFin = nouvelleDateFin;
-	}
-
-	public DateTime getDateFin() {
-		return dateFin;
-	}
-
-	public int getId() {
-		return id;
-	}
-
 }

@@ -3,6 +3,7 @@ package com.gestimmo.metier.model;
 import com.gestimmo.metier.exceptions.AppliDataException;
 
 import java.util.ArrayList;
+import java.util.List;
 
 public class Bien {
 
@@ -15,8 +16,8 @@ public class Bien {
 	private int tailleGarage;
 	private int nbPieces;
 	private int tailleVeranda;
-	private ArrayList<Periode> periodes = new ArrayList<Periode>();
-	private ArrayList<Location> locations = new ArrayList<Location>();
+	private List<Periode> periodes = new ArrayList<Periode>();
+	private List<Location> locations = new ArrayList<Location>();
 	private Type type;
 
 	public int getId() {
@@ -132,7 +133,7 @@ public class Bien {
 		return periodeARetourner;
 	}
 
-	public ArrayList<Periode> getPeriodes() {
+	public List<Periode> getPeriodes() {
 		return periodes;
 	}
 
@@ -151,11 +152,11 @@ public class Bien {
 		periodes.add(nouvellePeriode);
 	}
 
-	public void setPeriodes(ArrayList<Periode> listePeriodes) {
+	public void setPeriodes(List<Periode> listePeriodes) {
 		periodes = listePeriodes;
 	}
 
-	public ArrayList<Location> getLocations() {
+	public List<Location> getLocations() {
 		return locations;
 	}
 
@@ -163,7 +164,7 @@ public class Bien {
 		locations.add(nouvelleLoc);
 	}
 
-	public void setLocations(ArrayList<Location> listeLocations) {
+	public void setLocations(List<Location> listeLocations) {
 		locations = listeLocations;
 	}
 }

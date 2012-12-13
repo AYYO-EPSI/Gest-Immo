@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping package="com.gestimmo.metier.model">
+    <class name="Periode" table="periode">
+        <id name="id" column="periode_id" type="integer" unsaved-value="null">
+            <generator class="native" />
+        </id>
+
+        <property name="libelle" column="periode_libelle" type="string" not-null="true" />
+        <property name="montant" column="periode_montant" type="double" not-null="true" />
+        <property name="dateDebut" column="periode_datedebut" type="org.jadira.usertype.dateandtime.joda.PersistentDateTime" not-null="true" />
+        <property name="dateFin" column="periode_datefin" type="org.jadira.usertype.dateandtime.joda.PersistentDateTime" not-null="true" />
+    </class>
+</hibernate-mapping>

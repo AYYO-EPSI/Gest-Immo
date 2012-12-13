@@ -11,16 +11,15 @@ public class Location {
 		return id;
 	}
 
-	public void setId(int id) {
-		this.id = id;
+	public void setId(int nouvelId) {
+		id = nouvelId;
 	}
 
 	public Interval getPeriode() {
 		return periode;
 	}
 
-	public void setPeriode(Interval periode) {
-		this.periode = periode;
+	public void setPeriode(Interval nouvellePeriode) {
+		periode = nouvellePeriode;
 	}
-
 }
