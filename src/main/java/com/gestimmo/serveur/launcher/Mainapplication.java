@@ -3,6 +3,7 @@ package com.gestimmo.serveur.launcher;
 import com.gestimmo.serveur.resources.BienResource;
 import com.gestimmo.serveur.resources.DefaultResource;
 import com.gestimmo.serveur.resources.HandlerHibernate;
+import com.gestimmo.serveur.resources.LocationResource;
 import freemarker.template.Configuration;
 import org.restlet.Application;
 import org.restlet.Restlet;
@@ -28,6 +29,7 @@ public class Mainapplication extends Application {
 
 		router.attachDefault(DefaultResource.class);
 		hibernateHandling(router, "/bien/{bienId}", BienResource.class);
+		hibernateHandling(router, "/location", LocationResource.class);
 
 		return router;
 	}

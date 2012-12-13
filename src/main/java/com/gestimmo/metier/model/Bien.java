@@ -7,7 +7,7 @@ import java.util.List;
 
 public class Bien {
 
-	private int id;
+	private int idBien;
 	private double surface;
 	private char energie;
 	private String adresse;
@@ -20,12 +20,12 @@ public class Bien {
 	private List<Location> locations = new ArrayList<Location>();
 	private Type type;
 
-	public int getId() {
-		return id;
+	public int getIdBien() {
+		return idBien;
 	}
 
-	public void setId(int nouvelId) {
-		id = nouvelId;
+	public void setIdBien(int nouvelId) {
+		idBien = nouvelId;
 	}
 
 	public Type getType() {

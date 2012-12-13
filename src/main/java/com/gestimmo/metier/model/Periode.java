@@ -9,8 +9,6 @@ public class Periode {
 	private String libelle;
 	private double montant;
 	private Interval periode;
-	/*private DateTime dateDebut;
-	private DateTime dateFin;*/
 
 
 	public Periode() {
