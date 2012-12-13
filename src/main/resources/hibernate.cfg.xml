@@ -11,7 +11,7 @@
         <property name="hibernate.hbm2ddl.auto">create</property>
         <property name="current_session_context_class">thread</property>
 
-        <mapping resource="hibernateMapping/Bien.hbm.xml" />
+        <mapping resource="hibernateMapping/bien.hbm.xml" />
         <mapping resource="hibernateMapping/periode.hbm.xml" />
         <mapping resource="hibernateMapping/location.hbm.xml" />
     </session-factory>
