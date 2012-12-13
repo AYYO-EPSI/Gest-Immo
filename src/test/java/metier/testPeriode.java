@@ -4,7 +4,6 @@ import com.gestimmo.metier.exceptions.AppliDataException;
 import com.gestimmo.metier.model.Periode;
 import junit.framework.TestCase;
 import junit.framework.TestSuite;
-import org.joda.time.DateTime;
 import org.joda.time.Interval;
 
 import static org.hamcrest.CoreMatchers.*;

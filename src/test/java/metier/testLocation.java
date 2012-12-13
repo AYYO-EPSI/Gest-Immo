@@ -1,14 +1,9 @@
 package metier;
 
-import com.gestimmo.metier.exceptions.AppliDataException;
-import com.gestimmo.metier.model.*;
+import com.gestimmo.metier.model.Location;
 import junit.framework.TestCase;
 import junit.framework.TestSuite;
-import org.joda.time.DateTime;
-import org.joda.time.Days;
 import org.joda.time.Interval;
-
-import java.util.ArrayList;
 
 import static org.hamcrest.CoreMatchers.*;
 import static org.hamcrest.MatcherAssert.assertThat;
