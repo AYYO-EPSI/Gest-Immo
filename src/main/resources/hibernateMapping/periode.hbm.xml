@@ -8,7 +8,9 @@
 
         <property name="libelle" column="periode_libelle" type="string" not-null="true" />
         <property name="montant" column="periode_montant" type="double" not-null="true" />
-        <property name="dateDebut" column="periode_datedebut" type="org.jadira.usertype.dateandtime.joda.PersistentDateTime" not-null="true" />
-        <property name="dateFin" column="periode_datefin" type="org.jadira.usertype.dateandtime.joda.PersistentDateTime" not-null="true" />
+        <property name="periode" type="org.jadira.usertype.dateandtime.joda.PersistentInterval">
+            <column name="periode_datedebut" />
+            <column name="periode_datefin" />
+        </property>
     </class>
 </hibernate-mapping>
