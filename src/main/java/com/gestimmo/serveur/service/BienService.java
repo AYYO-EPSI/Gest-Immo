@@ -7,30 +7,19 @@ import com.gestimmo.metier.model.Bien;
 public class BienService {
 	private final GenericDAO bienDao = DaoFactory.getBienDAO();
 
-	public int creerBien(String surface,
-			String energie,
-			String adresse,
-			String codePostal,
-			String ville,
-			String tailleGarage,
-			String nbPieces,
-			String tailleVeranda) {
-		Bien bien = new Bien();
-		bien.setEnergie(energie.charAt(0));
-		bien.setAdresse(adresse);
-		bien.setCodePostal(codePostal);
-		bien.setNbPieces(Integer.parseInt(nbPieces));
-		bien.setSurface(Double.parseDouble(surface)  );
-		bien.setTailleGarage(Integer.parseInt(tailleGarage));
-		bien.setTailleVeranda(Integer.parseInt(tailleVeranda));
-		bien.setVille(ville);
+	public int creerBien(String surface, String energie, String adresse, String codePostal, String ville, String tailleGarage, String nbPieces, String tailleVeranda) {
+		try {
+			Bien bien = new Bien(Double.parseDouble(surface), energie.charAt(0), adresse, codePostal, ville, Integer.parseInt(tailleGarage), Integer.parseInt(nbPieces), Integer.parseInt(tailleVeranda));
 
-		bienDao.saveOrUpdate(bien);
-		
-		return bien.getIdBien();
+			bienDao.saveOrUpdate(bien);
+
+			return bien.getIdBien();
+		} catch (Exception e) {
+			return 0;
+		}
 	}
 
-	public Bien getUnBien(int idBien) {
+	public Bien voirUnBien(int idBien) {
 		Bien unBien = (Bien) bienDao.find(Bien.class, idBien);
 		return unBien;
 	}

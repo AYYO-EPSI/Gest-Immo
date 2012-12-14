@@ -16,14 +16,12 @@ public class BienResource extends ServerResource {
 	private final BienService bienProcessus = new BienService();
 
 	@Get
-	public Representation voir() {
-		bienProcessus.creerBien(null, null, null, null, null, null, null, null);
-
+	public Representation voirBien() {
 		int idBien = Integer.parseInt((String) getRequest().getAttributes().get("bienId"));
 
 		Map<String, Object> donnees = new HashMap<String, Object>();
 		donnees.put("pageTitle", "Voir un bien !!!");
-		donnees.put("bien", bienProcessus.getUnBien(idBien));
+		donnees.put("bien", bienProcessus.voirUnBien(idBien));
 
 		return TemplateRepresentation.createNew("voirBien.ftl", getContext()).with(donnees);
 	}
@@ -36,7 +34,7 @@ public class BienResource extends ServerResource {
 	}
 
 	@Put
-	public Representation creer(final Representation entity) {
+	public Representation creerBien(final Representation entity) {
 		final Form form = new Form(entity);
 
 		final int idLoc = bienProcessus.creerBien(form.getFirstValue("surface"), 

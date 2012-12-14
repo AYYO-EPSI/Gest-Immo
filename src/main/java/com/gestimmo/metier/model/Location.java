@@ -7,6 +7,14 @@ public class Location {
 	private int id;
 	private Interval periode;
 
+	public Location() {
+
+	}
+
+	public Location(Interval periode) {
+		setPeriode(periode);
+	}
+
 	public int getId() {
 		return id;
 	}

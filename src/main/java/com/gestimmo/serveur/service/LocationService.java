@@ -12,18 +12,14 @@ public class LocationService {
 	private final GenericDAO bienDao = DaoFactory.getBienDAO();
 
 	public int creerLocation(String idBien, String debut, String fin) {
-
 		DateTime dateDeb = new DateTime(Integer.parseInt(debut.substring(6)), Integer.parseInt(debut.substring(3, 5)), Integer.parseInt(debut.substring(0, 2)), 0, 0, 0);
 		DateTime dateFin = new DateTime(Integer.parseInt(fin.substring(6)), Integer.parseInt(fin.substring(3, 5)), Integer.parseInt(fin.substring(0, 2)), 0, 0, 0);
-		Interval interval = new Interval(dateDeb, dateFin);
-		Location loc = new Location();
-		loc.setPeriode(interval);
+		Location loc = new Location(new Interval(dateDeb, dateFin));
 
 		Bien bien = (Bien)bienDao.find(Bien.class, Integer.parseInt(idBien));
 		bien.ajouterLocation(loc);
 
 		locationDao.saveOrUpdate(loc);
-
 		bienDao.saveOrUpdate(bien);
 
 		return loc.getId();

@@ -20,6 +20,21 @@ public class Bien {
 	private List<Location> locations = new ArrayList<Location>();
 	private Type type;
 
+	public Bien() {
+
+	}
+
+	public Bien(double nouvelleSurface, char ener, String nouvelleAdresse, String cp, String ville, int tailleGarage, int nbPieces, int tailleVeranda) {
+		setSurface(nouvelleSurface);
+		setEnergie(ener);
+		setAdresse(nouvelleAdresse);
+		setCodePostal(cp);
+		setVille(ville);
+		setTailleGarage(tailleGarage);
+		setNbPieces(nbPieces);
+		setTailleVeranda(tailleVeranda);
+	}
+
 	public int getIdBien() {
 		return idBien;
 	}

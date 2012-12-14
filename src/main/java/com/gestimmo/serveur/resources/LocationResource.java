@@ -14,12 +14,9 @@ import java.util.Map;
 public class LocationResource extends ServerResource {
 
 	private final LocationService locationProcessus = new LocationService();
-	@Get
-	public Representation afficher() {
-		return TemplateRepresentation.createNew("ajoutLocation.ftl", getContext()).with("pageTitle", "titre");
-	}
+
 	@Put
-	public Representation creer(final Representation entity) {
+	public Representation creerLocation(final Representation entity) {
 		final Form form = new Form(entity);
 
 		final int idLoc = locationProcessus.creerLocation(form.getFirstValue("idBien"), form.getFirstValue("dateDebut"), form.getFirstValue("dateFin"));
