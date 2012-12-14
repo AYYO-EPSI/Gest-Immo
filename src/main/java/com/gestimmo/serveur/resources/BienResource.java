@@ -2,7 +2,10 @@ package com.gestimmo.serveur.resources;
 
 import com.gestimmo.serveur.processes.TemplateRepresentation;
 import com.gestimmo.serveur.service.BienService;
+
+import org.restlet.data.Form;
 import org.restlet.representation.Representation;
+import org.restlet.representation.StringRepresentation;
 import org.restlet.resource.*;
 
 import java.util.HashMap;
@@ -14,7 +17,7 @@ public class BienResource extends ServerResource {
 
 	@Get
 	public Representation voir() {
-		bienProcessus.creerBien();
+		bienProcessus.creerBien(null, null, null, null, null, null, null, null);
 
 		int idBien = Integer.parseInt((String) getRequest().getAttributes().get("bienId"));
 
@@ -33,10 +36,19 @@ public class BienResource extends ServerResource {
 	}
 
 	@Put
-	public Representation creer() {
-		String title = "Page des biens !!!";
+	public Representation creer(final Representation entity) {
+		final Form form = new Form(entity);
 
-		return TemplateRepresentation.createNew("index.ftl", getContext()).with("pageTitle", title);
+		final int idLoc = bienProcessus.creerBien(form.getFirstValue("surface"), 
+				form.getFirstValue("energie"), 
+				form.getFirstValue("adresse"), 
+				form.getFirstValue("codePostal"), 
+				form.getFirstValue("ville"), 
+				form.getFirstValue("tailleGarage"), 
+				form.getFirstValue("nbPieces"), 
+				form.getFirstValue("tailleVeranda"));
+
+		return new StringRepresentation(String.valueOf(idLoc));
 	}
 
 	@Delete
