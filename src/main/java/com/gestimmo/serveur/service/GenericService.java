@@ -2,11 +2,11 @@ package com.gestimmo.serveur.service;
 
 
 public abstract class GenericService {
-	abstract public int creer(String... args);
+	abstract public int creerObjet(String... args);
 
-	abstract public Object recuperer(int id);
+	abstract public Object recupererObjet(int id);
 
-	abstract public void metttreAJour();
+	abstract public void metttreAJourObjet();
 
-	abstract public void supprimer();
+	abstract public void supprimerObjet();
 }

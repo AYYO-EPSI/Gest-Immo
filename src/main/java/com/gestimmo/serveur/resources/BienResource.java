@@ -1,10 +1,12 @@
 package com.gestimmo.serveur.resources;
 
-import com.gestimmo.serveur.processes.TemplateRepresentation;
 import com.gestimmo.metier.model.Bien;
+import com.gestimmo.serveur.processes.TemplateRepresentation;
 import com.gestimmo.serveur.service.ServiceFactory;
 import org.restlet.representation.Representation;
-import org.restlet.resource.*;
+import org.restlet.resource.Delete;
+import org.restlet.resource.Get;
+import org.restlet.resource.Post;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -16,7 +18,7 @@ public class BienResource extends BaseResource {
 	@Override
 	public void doInit() {
 		final int idBien = Integer.parseInt((String) getRequest().getAttributes().get("bienId"));
-		leBienRepresente = ServiceFactory.getBienService().recuperer(idBien);
+		leBienRepresente = ServiceFactory.getBienService().recupererObjet(idBien);
 	}
 
 	@Get
