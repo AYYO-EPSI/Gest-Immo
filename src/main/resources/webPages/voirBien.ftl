@@ -1,4 +1,5 @@
-<#include "/include/header.ftl">
+<#import "include/template.ftl" as htmlTemplate/>
+<@htmlTemplate.page title="Voir un bien">
 
 Surface :               ${bien.getSurface()}       <br />
 Energie :               ${bien.getEnergie()}       <br />
@@ -10,4 +11,6 @@ Nombre de pièces :      ${bien.getNbPieces()}      <br />
 Taille de la véranda :  ${bien.getTailleVeranda()} <br />
 
 
-<#include "/include/footer.ftl">
+<a href="/bien/${bien.getIdBien()}/location">Ajouter une location pour ce bien</a>
+
+</@htmlTemplate.page>

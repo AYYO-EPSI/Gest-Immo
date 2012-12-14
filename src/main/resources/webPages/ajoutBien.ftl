@@ -1,4 +1,5 @@
-<#include "/include/header.ftl">
+<#import "include/template.ftl" as htmlTemplate/>
+<@htmlTemplate.page title="Ajouter un bien">
 
 <form action="/bien" method="post" accept-charset="UTF-8">
     <label>Surface: </label><input type="text" name="surface" /> <br />
@@ -13,4 +14,4 @@
     <input type="submit" value="Créer" />
 </form>
 
-<#include "/include/footer.ftl">
+</@htmlTemplate.page>

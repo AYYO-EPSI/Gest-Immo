@@ -1,4 +1,5 @@
-<#include "/include/header.ftl">
+<#import "include/template.ftl" as htmlTemplate/>
+<@htmlTemplate.page title="Ajouter une location">
 
 <form action="/location" method="post" accept-charset="UTF-8">
     <input type="hidden" name="idBien" value="1" />
@@ -9,4 +10,4 @@
     <input type="submit" value="Creer" />
 </form>
 
-<#include "/include/footer.ftl">
+</@htmlTemplate.page>

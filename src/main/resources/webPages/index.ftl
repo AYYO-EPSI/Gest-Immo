@@ -1,5 +1,6 @@
-<#include "/include/header.ftl">
+<#import "include/template.ftl" as htmlTemplate/>
+<@htmlTemplate.page title="Voir un bien">
 
-<p>Hello world!</p>
+<a href="/bien">Ajouter un bien</a>
 
-<#include "/include/footer.ftl">
+</@htmlTemplate.page>

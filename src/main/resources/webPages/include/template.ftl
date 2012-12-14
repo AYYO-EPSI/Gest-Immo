@@ -1,3 +1,4 @@
+<#macro page title>
 <!DOCTYPE html>
 <!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
 <!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
@@ -6,7 +7,7 @@
 <html class="no-js"> <!--<![endif]-->
 <head>
     <meta charset="utf-8">
-    <title>${pageTitle}</title>
+    <title>${title?html}</title>
 
     <link rel="stylesheet" href="/styles/master.css">
 
@@ -20,3 +21,9 @@
 </head>
 
 <body>
+
+    <#nested/>
+
+</body>
+</html>
+</#macro>

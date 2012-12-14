@@ -23,24 +23,16 @@ public class BienResource extends BaseResource {
 
 	@Get
 	public Representation voirBien() {
-		Map<String, Object> donnees = new HashMap<String, Object>();
-		donnees.put("pageTitle", "Voir un bien");
-		donnees.put("bien", leBienRepresente);
-
-		return TemplateRepresentation.createNew("voirBien.ftl", getContext()).with(donnees);
+		return TemplateRepresentation.createNew("voirBien.ftl", getContext()).with("bien", leBienRepresente);
 	}
 
 	@Post
 	public Representation mettreAjour() {
-		String title = "MaJ du bien !!!";
-
-		return TemplateRepresentation.createNew("index.ftl", getContext()).with("pageTitle", title);
+		return TemplateRepresentation.createNew("index.ftl", getContext());
 	}
 
 	@Delete
 	public Representation supprimer() {
-		String title = "Page des biens !!!";
-
-		return TemplateRepresentation.createNew("index.ftl", getContext()).with("pageTitle", title);
+		return TemplateRepresentation.createNew("index.ftl", getContext());
 	}
 }
