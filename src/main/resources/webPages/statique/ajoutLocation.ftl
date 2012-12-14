@@ -1,6 +1,6 @@
 <#include "/include/header.ftl">
 
-<form action="/location" id="createLoc">
+<form action="/location" method="post" accept-charset="UTF-8">
     <input type="hidden" name="idBien" value="1" />
 
     <label>Date début: </label><input type="text" name="dateDebut" value="jj/mm/aaaa" /><br />

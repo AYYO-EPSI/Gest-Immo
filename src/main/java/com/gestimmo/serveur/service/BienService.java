@@ -4,12 +4,13 @@ import com.gestimmo.metier.dao.DaoFactory;
 import com.gestimmo.metier.dao.GenericDAO;
 import com.gestimmo.metier.model.Bien;
 
-public class BienService {
+public class BienService extends GenericService {
 	private final GenericDAO bienDao = DaoFactory.getBienDAO();
 
-	public int creerBien(String surface, String energie, String adresse, String codePostal, String ville, String tailleGarage, String nbPieces, String tailleVeranda) {
+	@Override
+	public int creer(String... args) {
 		try {
-			Bien bien = new Bien(Double.parseDouble(surface), energie.charAt(0), adresse, codePostal, ville, Integer.parseInt(tailleGarage), Integer.parseInt(nbPieces), Integer.parseInt(tailleVeranda));
+			Bien bien = new Bien(Double.parseDouble(args[0]), args[1].charAt(0), args[2], args[3], args[4], Integer.parseInt(args[5]), Integer.parseInt(args[6]), Integer.parseInt(args[7]));
 
 			bienDao.saveOrUpdate(bien);
 
@@ -19,8 +20,19 @@ public class BienService {
 		}
 	}
 
-	public Bien voirUnBien(int idBien) {
+	@Override
+	public Bien recuperer(int idBien) {
 		Bien unBien = (Bien) bienDao.find(Bien.class, idBien);
 		return unBien;
+	}
+
+	@Override
+	public void metttreAJour() {
+
+	}
+
+	@Override
+	public void supprimer() {
+
 	}
 }

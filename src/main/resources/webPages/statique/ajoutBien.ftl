@@ -1,6 +1,6 @@
 <#include "/include/header.ftl">
 
-<form id="formBien">
+<form action="/bien" method="post" accept-charset="UTF-8">
     <label>Surface: </label><input type="text" name="surface" /> <br />
     <label>Energie: </label><input type="text" name="energie" /> <br />
     <label>Adresse: </label><input type="text" name="adresse" /> <br />

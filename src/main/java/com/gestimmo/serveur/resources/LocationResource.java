@@ -1,27 +1,25 @@
 package com.gestimmo.serveur.resources;
 
-import com.gestimmo.serveur.processes.TemplateRepresentation;
+import com.gestimmo.metier.model.Bien;
+import com.gestimmo.metier.model.Location;
 import com.gestimmo.serveur.service.BienService;
 import com.gestimmo.serveur.service.LocationService;
-import org.restlet.data.Form;
-import org.restlet.representation.Representation;
-import org.restlet.representation.StringRepresentation;
-import org.restlet.resource.*;
+import com.gestimmo.serveur.service.ServiceFactory;
 
-import java.util.HashMap;
-import java.util.Map;
+public class LocationResource extends BaseResource {
 
-public class LocationResource extends ServerResource {
+	private Bien leBienParent;
+	private Location laLocationRepresentee;
 
 	private final LocationService locationProcessus = new LocationService();
+	private final BienService bienProcessus = new BienService();
 
-	@Put
-	public Representation creerLocation(final Representation entity) {
-		final Form form = new Form(entity);
-
-		final int idLoc = locationProcessus.creerLocation(form.getFirstValue("idBien"), form.getFirstValue("dateDebut"), form.getFirstValue("dateFin"));
-
-		return new StringRepresentation(String.valueOf(idLoc));
+	@Override
+	public void doInit() {
+		final int idBien = Integer.parseInt((String) getRequest().getAttributes().get("bienId"));
+		leBienParent = ServiceFactory.getBienService().recuperer(idBien);
+		if (leBienParent != null) {
+			final String idLoc = (String) getRequestAttributes().get("locId");
+		}
 	}
-
 }
