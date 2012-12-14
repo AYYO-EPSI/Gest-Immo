@@ -3,10 +3,11 @@ package com.gestimmo.metier.model;
 import com.gestimmo.metier.exceptions.AppliDataException;
 
 import java.util.ArrayList;
+import java.util.List;
 
 public class Bien {
 
-	private int id;
+	private int idBien;
 	private double surface;
 	private char energie;
 	private String adresse;
@@ -15,15 +16,31 @@ public class Bien {
 	private int tailleGarage;
 	private int nbPieces;
 	private int tailleVeranda;
-	private ArrayList<Periode> periodes = new ArrayList<Periode>();
+	private List<Periode> periodes = new ArrayList<Periode>();
+	private List<Location> locations = new ArrayList<Location>();
 	private Type type;
 
-	public int getId() {
-		return id;
+	public Bien() {
+
 	}
 
-	public void setId(int nouvelId) {
-		id = nouvelId;
+	public Bien(double nouvelleSurface, char ener, String nouvelleAdresse, String cp, String ville, int tailleGarage, int nbPieces, int tailleVeranda) {
+		setSurface(nouvelleSurface);
+		setEnergie(ener);
+		setAdresse(nouvelleAdresse);
+		setCodePostal(cp);
+		setVille(ville);
+		setTailleGarage(tailleGarage);
+		setNbPieces(nbPieces);
+		setTailleVeranda(tailleVeranda);
+	}
+
+	public int getIdBien() {
+		return idBien;
+	}
+
+	public void setIdBien(int nouvelId) {
+		idBien = nouvelId;
 	}
 
 	public Type getType() {
@@ -131,15 +148,38 @@ public class Bien {
 		return periodeARetourner;
 	}
 
-	public ArrayList<Periode> getPeriodes() {
+	public List<Periode> getPeriodes() {
 		return periodes;
+	}
+
+	public Location getLocation(int idLocation) {
+		Location locationARetourner = null;
+		for (Location uneLocation : locations) {
+			if (uneLocation.getId() == idLocation) {
+				locationARetourner = uneLocation;
+			}
+		}
+
+		return locationARetourner;
 	}
 
 	public void ajouterPeriode(Periode nouvellePeriode) {
 		periodes.add(nouvellePeriode);
 	}
 
-	public void setPeriodes(ArrayList<Periode> listePeriodes) {
+	public void setPeriodes(List<Periode> listePeriodes) {
 		periodes = listePeriodes;
+	}
+
+	public List<Location> getLocations() {
+		return locations;
+	}
+
+	public void ajouterLocation(Location nouvelleLoc) {
+		locations.add(nouvelleLoc);
+	}
+
+	public void setLocations(List<Location> listeLocations) {
+		locations = listeLocations;
 	}
 }

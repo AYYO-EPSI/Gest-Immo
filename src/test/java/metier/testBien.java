@@ -1,10 +1,7 @@
 package metier;
 
 import com.gestimmo.metier.exceptions.AppliDataException;
-import com.gestimmo.metier.model.Bien;
-import com.gestimmo.metier.model.Calculateur;
-import com.gestimmo.metier.model.Periode;
-import com.gestimmo.metier.model.Type;
+import com.gestimmo.metier.model.*;
 import junit.framework.TestCase;
 import junit.framework.TestSuite;
 import org.joda.time.DateTime;
@@ -139,8 +136,7 @@ public class testBien extends TestCase {
 
 	public void testCalculerPrixPourUnInterval() {
 		Periode periode = new Periode(1);
-		periode.setDateDebut(new DateTime(2012, 1, 1, 0, 0));
-		periode.setDateFin(new DateTime(2012, 12, 31, 0, 0));
+		periode.setPeriode(new Interval(new DateTime(2012, 1, 1, 0, 0), new DateTime(2012, 12, 31, 0, 0)));
 		periode.setMontant(85);
 
 		DateTime dateDebutReservation = new DateTime(2012, 1, 15, 0, 0);
@@ -154,18 +150,15 @@ public class testBien extends TestCase {
 
 	public void testCalculerPrixPourPlusieursIntervales() {
 		Periode periode1 = new Periode(1);
-		periode1.setDateDebut(new DateTime(2012, 1, 1, 0, 0));
-		periode1.setDateFin(new DateTime(2012, 1, 31, 0, 0));
+		periode1.setPeriode(new Interval(new DateTime(2012, 1, 1, 0, 0), new DateTime(2012, 1, 31, 0, 0)));
 		periode1.setMontant(25);
 
 		Periode periode2 = new Periode(2);
-		periode2.setDateDebut(new DateTime(2012, 2, 1, 0, 0));
-		periode2.setDateFin(new DateTime(2012, 2, 29, 0, 0));
+		periode2.setPeriode(new Interval(new DateTime(2012, 2, 1, 0, 0), new DateTime(2012, 2, 29, 0, 0)));
 		periode2.setMontant(15);
 
 		Periode periode3 = new Periode(3);
-		periode3.setDateDebut(new DateTime(2012, 3, 1, 0, 0));
-		periode3.setDateFin(new DateTime(2012, 3, 31, 0, 0));
+		periode3.setPeriode(new Interval(new DateTime(2012, 3, 1, 0, 0), new DateTime(2012, 3, 31, 0, 0)));
 		periode3.setMontant(85);
 
 		DateTime dateDebutReservation = new DateTime(2012, 1, 15, 0, 0);
@@ -186,6 +179,27 @@ public class testBien extends TestCase {
 			unBien.setType(Type.Chateau);
 			assertThat(unBien.getType(), is(Type.Chateau));
 	   }
+
+	public void testAjoutLocation() {
+		unBien.ajouterPeriode(new Periode());
+		assertThat(unBien.getPeriodes().size(), is(1));
+	}
+
+	public void testAjoutlocations() {
+		ArrayList<Location> loc = new ArrayList<Location>();
+		loc.add(new Location());
+		loc.add(new Location());
+
+		unBien.setLocations(loc);
+		assertThat(unBien.getLocations().size(), is(2));
+	}
+
+	public void testUneLocation() {
+		Location loc = new Location();
+		loc.setId(1);
+		unBien.ajouterLocation(loc);
+		assertThat(unBien.getLocation(1).getId(), is(1));
+	}
 }
 
 	

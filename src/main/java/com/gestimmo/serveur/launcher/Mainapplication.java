@@ -1,8 +1,6 @@
 package com.gestimmo.serveur.launcher;
 
-import com.gestimmo.serveur.resources.BienResource;
-import com.gestimmo.serveur.resources.DefaultResource;
-import com.gestimmo.serveur.resources.HandlerHibernate;
+import com.gestimmo.serveur.resources.*;
 import freemarker.template.Configuration;
 import org.restlet.Application;
 import org.restlet.Restlet;
@@ -27,7 +25,11 @@ public class Mainapplication extends Application {
 		attachRessources(router);
 
 		router.attachDefault(DefaultResource.class);
+		hibernateHandling(router, "/bien", BiensResource.class);
 		hibernateHandling(router, "/bien/{bienId}", BienResource.class);
+
+		hibernateHandling(router, "/bien/{bienId}/location", LocationsResource.class);
+		hibernateHandling(router, "/bien/{bienId}/location/{locId}", LocationResource.class);
 
 		return router;
 	}
@@ -42,6 +44,7 @@ public class Mainapplication extends Application {
 	}
 
 	private void attachRessources(final Router router) {
+
 		router.attach("/images", new Directory(getContext(), new Reference("clap://system/webRessources/images")));
 		router.attach("/js", new Directory(getContext(), new Reference("clap://system/webRessources/js")));
 		router.attach("/styles", new Directory(getContext(), new Reference("clap://system/webRessources/styles")));
