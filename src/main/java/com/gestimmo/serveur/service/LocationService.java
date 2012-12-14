@@ -14,7 +14,7 @@ public class LocationService extends GenericService {
 		DateTime dateFin = new DateTime(Integer.parseInt(args[2].substring(6)), Integer.parseInt(args[2].substring(3, 5)), Integer.parseInt(args[2].substring(0, 2)), 0, 0, 0);
 		Location loc = new Location(new Interval(dateDeb, dateFin));
 
-		Bien bien = (Bien)DaoFactory.getBienDAO().find(Bien.class, Integer.parseInt(args[0]));
+		Bien bien = (Bien) DaoFactory.getBienDAO().find(Bien.class, Integer.parseInt(args[0]));
 		bien.ajouterLocation(loc);
 
 		DaoFactory.getLocationDAO().saveOrUpdate(loc);
@@ -28,6 +28,7 @@ public class LocationService extends GenericService {
 		Location uneLocation = (Location) DaoFactory.getLocationDAO().find(Bien.class, idLoc);
 		return uneLocation;
 	}
+
 	@Override
 	public void metttreAJourObjet() {
 
