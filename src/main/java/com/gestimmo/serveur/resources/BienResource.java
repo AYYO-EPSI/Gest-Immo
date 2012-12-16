@@ -8,9 +8,6 @@ import org.restlet.resource.Delete;
 import org.restlet.resource.Get;
 import org.restlet.resource.Post;
 
-import java.util.HashMap;
-import java.util.Map;
-
 public class BienResource extends BaseResource {
 
 	private Bien leBienRepresente;

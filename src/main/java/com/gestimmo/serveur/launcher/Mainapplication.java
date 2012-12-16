@@ -44,7 +44,6 @@ public class Mainapplication extends Application {
 	}
 
 	private void attachRessources(final Router router) {
-
 		router.attach("/images", new Directory(getContext(), new Reference("clap://system/webRessources/images")));
 		router.attach("/js", new Directory(getContext(), new Reference("clap://system/webRessources/js")));
 		router.attach("/styles", new Directory(getContext(), new Reference("clap://system/webRessources/styles")));
