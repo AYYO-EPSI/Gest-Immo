@@ -1,7 +1,7 @@
 <#import "include/template.ftl" as htmlTemplate/>
 <@htmlTemplate.page title="Ajouter une location">
 
-<form action="/location" method="post" accept-charset="UTF-8">
+<form action="/bien/${bienId}/location" method="post" accept-charset="UTF-8">
     <input type="hidden" name="idBien" value="${bienId}" />
 
     <label>Date début: </label><input type="text" name="dateDebut" value="jj/mm/aaaa" /><br />

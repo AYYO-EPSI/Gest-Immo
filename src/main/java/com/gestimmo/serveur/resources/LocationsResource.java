@@ -32,7 +32,7 @@ public class LocationsResource extends BaseResource {
 
 		if (idLoc != 0) {
 			setStatus(Status.SUCCESS_CREATED);
-			getResponse().redirectSeeOther(getChildReference(getRequest().getResourceRef(), idLoc));
+			getResponse().redirectSeeOther(getRequest().getRootRef() + "/bien/" + form.getFirstValue("idBien"));
 		} else {
 			throw new ResourceException(Status.CLIENT_ERROR_BAD_REQUEST, "Erreur: donnée(s) invalide.");
 		}

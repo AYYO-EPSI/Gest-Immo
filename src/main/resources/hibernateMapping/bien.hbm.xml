@@ -15,12 +15,12 @@
         <property name="nbPieces" column="bien_nbPieces" type="integer" not-null="true" />
         <property name="tailleVeranda" column="bien_tailleVeranda" type="integer" not-null="false" />
 
-        <bag name="periodes" table="periode" cascade="delete" order-by="periode_id">
+        <bag name="periodes" table="periode" cascade="delete" order-by="periode_id" lazy="false">
             <key column="periode_idBien" not-null="true" />
             <one-to-many class="Periode" />
         </bag>
 
-        <bag name="locations" table="location" cascade="delete" order-by="location_id">
+        <bag name="locations" table="location" cascade="delete" order-by="location_id" lazy="false">
             <key column="location_idBien" not-null="false" />
             <one-to-many class="Location" />
         </bag>
