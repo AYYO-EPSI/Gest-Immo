@@ -7,8 +7,8 @@ Adresse :               ${bien.getAdresse()}       <br />
 CP :                    ${bien.getCodePostal()}    <br />
 Ville :                 ${bien.getVille()}         <br />
 Taille du garage :      ${bien.getTailleGarage()}  <br />
-Nombre de pièces :      ${bien.getNbPieces()}      <br />
-Taille de la véranda :  ${bien.getTailleVeranda()} <br />
+Nombre de pi&egrave;ces :      ${bien.getNbPieces()}      <br />
+Taille de la v&eacute;randa :  ${bien.getTailleVeranda()} <br />
 
 
 <#if (bien.getLocations()?has_content)>
