@@ -119,6 +119,22 @@ public class testBien extends TestCase {
 		assertThat(unBien.getPeriodes().size(), is(1));
 	}
 
+	public void testAjoutPeriodesNonChevauchante() {
+		try {
+			Periode periodeOk = new Periode();
+			Periode periodeFausse = new Periode();
+
+			periodeOk.setPeriode(new Interval(new DateTime(2012, 1, 1, 0, 0), new DateTime(2012, 12, 31, 0, 0)));
+			periodeOk.setPeriode(new Interval(new DateTime(2011, 1, 1, 0, 0), new DateTime(2013, 1, 1, 0, 0)));
+
+			unBien.ajouterPeriode(periodeOk);
+			unBien.ajouterPeriode(periodeFausse);
+
+			fail("Les periodes se chevauchent !");
+		} catch (AppliDataException e) {
+		}
+	}
+
 	public void testAjoutPeriodes() {
 		ArrayList<Periode> periodes = new ArrayList<Periode>();
 		periodes.add(new Periode());
@@ -175,14 +191,27 @@ public class testBien extends TestCase {
 		assertThat(calc.calculerPrixLocation(unBien, new Interval(dateDebutReservation, dateFinReservation)), is( montant ));
 	}
 
-	   public void testType() {
-			unBien.setType(Type.Chateau);
-			assertThat(unBien.getType(), is(Type.Chateau));
-	   }
+	public void testType() {
+		unBien.setType(Type.Chateau);
+		assertThat(unBien.getType(), is(Type.Chateau));
+	}
 
 	public void testAjoutLocation() {
-		unBien.ajouterPeriode(new Periode());
-		assertThat(unBien.getPeriodes().size(), is(1));
+		unBien.ajouterLocation(new Location());
+		assertThat(unBien.getLocations().size(), is(1));
+	}
+
+	public void testAjoutLocationNonChevauchante() {
+		try {
+			Location locationOk = new Location(new Interval(new DateTime(2012, 1, 1, 0, 0), new DateTime(2012, 12, 31, 0, 0)));
+			Location locationNok = new Location(new Interval(new DateTime(2011, 1, 1, 0, 0), new DateTime(2013, 1, 1, 0, 0)));
+
+			unBien.ajouterLocation(locationOk);
+			unBien.ajouterLocation(locationNok);
+
+			fail("Les periodes de location se chevauchent !");
+		} catch (AppliDataException e) {
+		}
 	}
 
 	public void testAjoutlocations() {
