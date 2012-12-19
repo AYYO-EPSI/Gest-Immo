@@ -4,7 +4,7 @@
 <form action="/bien" method="post" accept-charset="UTF-8">
     <label for="surface">Surface: </label><input type="text" name="surface" id="surface" /> <br />
     <label for="energie">&Eacute;nergie: </label>
-    <select id="energie">
+    <select name="energie" id="energie">
         <option value="0"></option>
         <option value="A">A</option>
         <option value="B">B</option>

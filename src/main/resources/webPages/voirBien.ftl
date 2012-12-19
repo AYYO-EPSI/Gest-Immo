@@ -14,7 +14,7 @@ Taille de la v&eacute;randa :  ${bien.getTailleVeranda()} <br />
 <#if (bien.getLocations()?has_content)>
     Réservation: <br />
     <#list bien.getLocations() as x>
-        ${x_index + 1}. ${x.getPeriode().getStart().toString()} - ${x.getPeriode().getEnd().toString()}<br />
+        ${x_index + 1}. ${x.getPeriode().getStart().toString("MM/dd/YYYY")} - ${x.getPeriode().getEnd().toString("MM/dd/YYYY")}<br />
     </#list>
 </#if>
 

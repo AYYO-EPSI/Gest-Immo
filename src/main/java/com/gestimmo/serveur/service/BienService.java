@@ -20,8 +20,7 @@ public class BienService extends GenericService {
 
 	@Override
 	public Bien recupererObjet(int idBien) {
-		Bien unBien = (Bien) DaoFactory.getBienDAO().find(Bien.class, idBien);
-		return unBien;
+		return (Bien) DaoFactory.getBienDAO().find(Bien.class, idBien);
 	}
 
 	@Override

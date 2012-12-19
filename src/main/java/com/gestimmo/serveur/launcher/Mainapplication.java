@@ -28,8 +28,7 @@ public class Mainapplication extends Application {
 		hibernateHandling(router, "/bien", BiensResource.class);
 		hibernateHandling(router, "/bien/{bienId}", BienResource.class);
 
-		hibernateHandling(router, "/bien/{bienId}/location", LocationsResource.class);
-		hibernateHandling(router, "/bien/{bienId}/location/{locId}", LocationResource.class);
+		hibernateHandling(router, "/bien/{bienId}/location", LocationResource.class);
 
 		return router;
 	}
