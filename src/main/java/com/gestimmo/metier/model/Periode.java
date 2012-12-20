@@ -1,6 +1,7 @@
 package com.gestimmo.metier.model;
 
 import com.gestimmo.metier.exceptions.AppliDataException;
+import org.joda.time.DateTime;
 import org.joda.time.Interval;
 
 public class Periode {
@@ -16,6 +17,12 @@ public class Periode {
 
 	public Periode(int indice) {
 		id = indice;
+	}
+
+	public Periode(String lib, DateTime dateDeb, DateTime dateFin, Double prix) {
+		libelle = lib;
+		periode = new Interval(dateDeb, dateFin);
+		montant = prix;
 	}
 
 	public int getId() {

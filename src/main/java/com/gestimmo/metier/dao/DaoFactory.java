@@ -8,4 +8,8 @@ public class DaoFactory {
 	public static GenericDAO getLocationDAO() {
 		return new LocationDao();
 	}
+
+	public static GenericDAO getPeriodeDAO() {
+		return new PeriodeDao();
+	}
 }

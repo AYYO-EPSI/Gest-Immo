@@ -8,4 +8,8 @@ public class ServiceFactory {
 	public static LocationService getLocationService() {
 		return new LocationService();
 	}
+
+	public static PeriodeService getPeriodeService() {
+		return new PeriodeService();
+	}
 }
