@@ -1,5 +1,6 @@
 package com.gestimmo.serveur.resources;
 
+import com.gestimmo.metier.exceptions.ApplicationMainException;
 import com.gestimmo.metier.model.Bien;
 import com.gestimmo.serveur.processes.TemplateRepresentation;
 import com.gestimmo.serveur.service.ServiceFactory;
@@ -28,13 +29,15 @@ public class LocationResource extends BaseResource {
 	public void creerLocation(final Representation entity) {
 		final Form form = new Form(entity);
 
-		final int idLoc = ServiceFactory.getLocationService().creerObjet(form.getFirstValue("idBien"), form.getFirstValue("dateDebut"), form.getFirstValue("dateFin"));
+		try {
+			ServiceFactory.getLocationService().creerObjet((String) getRequest().getAttributes().get("bienId"), form.getFirstValue("dateDebut"), form.getFirstValue("dateFin"));
 
-		if (idLoc != 0) {
 			setStatus(Status.SUCCESS_CREATED);
-			getResponse().redirectSeeOther(getRequest().getRootRef() + "/bien/" + form.getFirstValue("idBien"));
-		} else {
-			throw new ResourceException(Status.CLIENT_ERROR_BAD_REQUEST, "Erreur: donnée(s) invalide.");
+			getResponse().redirectSeeOther(getRequest().getRootRef() + "/bien/" + getRequest().getAttributes().get("bienId"));
+		} catch (NumberFormatException ne) {
+			throw new ResourceException(Status.CLIENT_ERROR_BAD_REQUEST, "Conversion illicite.");
+		} catch (ApplicationMainException e) {
+			throw new ResourceException(Status.CLIENT_ERROR_BAD_REQUEST, e.getMessage());
 		}
 	}
 

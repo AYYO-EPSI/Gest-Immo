@@ -1,6 +1,8 @@
 import junit.framework.TestCase;
 import junit.framework.TestSuite;
-import metier.*;
+import metier.testBien;
+import metier.testLocation;
+import metier.testPeriode;
 
 public final class AllTestCase extends TestCase {
 

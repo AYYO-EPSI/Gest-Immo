@@ -7,15 +7,11 @@ public class BienService extends GenericService {
 
 	@Override
 	public int creerObjet(String... args) {
-		try {
-			Bien bien = new Bien(Double.parseDouble(args[0]), args[1].charAt(0), args[2], args[3], args[4], Integer.parseInt(args[5]), Integer.parseInt(args[6]), Integer.parseInt(args[7]));
+		Bien bien = new Bien(Double.parseDouble(args[0]), args[1].charAt(0), args[2], args[3], args[4], Integer.parseInt(args[5]), Integer.parseInt(args[6]), Integer.parseInt(args[7]));
 
-			DaoFactory.getBienDAO().saveOrUpdate(bien);
+		DaoFactory.getBienDAO().saveOrUpdate(bien);
 
-			return bien.getIdBien();
-		} catch (Exception e) {
-			return 0;
-		}
+		return bien.getIdBien();
 	}
 
 	@Override
