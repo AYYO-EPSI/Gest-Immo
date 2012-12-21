@@ -16,7 +16,7 @@ P&eacute;riodes de location : <br />
     <#list bien.getPeriodes() as p>
     ${p_index + 1}. ${p.getLibelle()}<br />
     Prix journalier : ${p.getMontant()} euros<br />
-    ${p.getPeriode().getStart().toString("MM/dd/YYYY")} - ${p.getPeriode().getEnd().toString("MM/dd/YYYY")}<br /><br />
+    ${p.getPeriode().getStart().toString("dd/MM/YYYY")} - ${p.getPeriode().getEnd().toString("dd/MM/YYYY")}<br /><br />
     </#list>
 </#if>
 
@@ -25,7 +25,8 @@ P&eacute;riodes de location : <br />
 <#if (bien.getLocations()?has_content)>
  Réservation: <br />
     <#list bien.getLocations() as x>
-    ${x_index + 1}. ${x.getPeriode().getStart().toString("MM/dd/YYYY")} - ${x.getPeriode().getEnd().toString("MM/dd/YYYY")}<br /><br />
+    ${x_index + 1}. ${x.getPeriode().getStart().toString("dd/MM/YYYY")} - ${x.getPeriode().getEnd().toString("dd/MM/YYYY")}<br /><br />
+    Montant de la location : ${bien.calculerMontantLocation(x.getId())} Euros
     </#list>
 </#if>
 <hr />

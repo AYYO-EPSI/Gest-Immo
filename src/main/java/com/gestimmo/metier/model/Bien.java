@@ -19,6 +19,7 @@ public class Bien {
 	private List<Periode> periodes = new ArrayList<Periode>();
 	private List<Location> locations = new ArrayList<Location>();
 	private Type type;
+	private Calculateur calc = new Calculateur();
 
 	public Bien() {
 
@@ -191,5 +192,9 @@ public class Bien {
 
 	public void setLocations(List<Location> listeLocations) {
 		locations = listeLocations;
+	}
+
+	public double calculerMontantLocation( int idLocation ) {
+		return calc.calculerPrixLocation( this, (getLocation( idLocation )).getPeriode() );
 	}
 }
