@@ -16,13 +16,13 @@ public class Periode {
 	}
 
 	public Periode(int indice) {
-		id = indice;
+		setId(indice);
 	}
 
 	public Periode(String lib, DateTime dateDeb, DateTime dateFin, Double prix) {
-		libelle = lib;
-		periode = new Interval(dateDeb, dateFin);
-		montant = prix;
+		setLibelle(lib);
+		setPeriode(new Interval(dateDeb, dateFin));
+		setMontant(prix);
 	}
 
 	public int getId() {
