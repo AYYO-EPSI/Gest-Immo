@@ -7,6 +7,7 @@
             <generator class="increment"/>
         </id>
 
+        <property name="type" column="bien_type" type="com.gestimmo.metier.model.Type" not-null="true"/>
         <property name="surface" column="bien_surface" type="double" not-null="true"/>
         <property name="energie" column="bien_energie" type="char" not-null="true"/>
         <property name="codePostal" column="bien_codePostal" type="string" not-null="true"/>

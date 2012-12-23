@@ -6,6 +6,8 @@ import org.hibernate.Transaction;
 import org.restlet.Context;
 import org.restlet.Request;
 import org.restlet.Response;
+import org.restlet.data.Status;
+import org.restlet.resource.ResourceException;
 import org.restlet.routing.Filter;
 
 public class HandlerHibernate extends Filter {
@@ -29,9 +31,9 @@ public class HandlerHibernate extends Filter {
 	protected void afterHandle(final Request request, final Response response) {
 		try {
 			transactionEncours.commit();
-		} catch (final ApplicationMainException e) {
-			System.out.println(e);
+		} catch (final Exception e) {
 			transactionEncours.rollback();
+			response.setStatus(Status.CLIENT_ERROR_EXPECTATION_FAILED, e.getMessage());
 		}
 	}
 }

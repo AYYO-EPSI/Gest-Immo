@@ -2,6 +2,13 @@
 <@htmlTemplate.page title="Ajouter un bien">
 
 <form action="/bien" method="post" accept-charset="UTF-8">
+	<label for="type">Type de bien: </label>
+	<select name="type" id="type">
+		<option value=""></option>
+        <#list listeTypes as unType>
+            <option values="${unType}">${unType}</option>
+        </#list>
+	</select><br/>
 	<label for="surface">Surface: </label><input type="text" name="surface" id="surface"/> <br/>
 	<label for="energie">&Eacute;nergie: </label>
 	<select name="energie" id="energie">

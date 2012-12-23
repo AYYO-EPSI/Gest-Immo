@@ -2,6 +2,7 @@ package com.gestimmo.serveur.resources;
 
 import com.gestimmo.metier.exceptions.ApplicationMainException;
 import com.gestimmo.metier.model.Bien;
+import com.gestimmo.metier.model.Type;
 import com.gestimmo.serveur.processes.TemplateRepresentation;
 import com.gestimmo.serveur.service.ServiceFactory;
 import org.restlet.data.Form;
@@ -30,7 +31,7 @@ public class BienResource extends BaseResource {
 			chargerObjetsEnMemoire(leBienRepresente.getPeriodes());
 			return TemplateRepresentation.createNew("voirBien.ftl", getContext()).with("bien", leBienRepresente);
 		} else {
-			return TemplateRepresentation.createNew("ajoutBien.ftl", getContext());
+			return TemplateRepresentation.createNew("ajoutBien.ftl", getContext()).with("listeTypes", Type.values());
 		}
 	}
 
@@ -40,7 +41,7 @@ public class BienResource extends BaseResource {
 			final Form form = new Form(entity);
 
 			try {
-				final int idBien = ServiceFactory.getBienService().creerObjet(form.getFirstValue("surface"), form.getFirstValue("energie"), form.getFirstValue("adresse"), form.getFirstValue("codePostal"), form.getFirstValue("ville"), form.getFirstValue("tailleGarage"), form.getFirstValue("nbPieces"), form.getFirstValue("tailleVeranda"));
+				final int idBien = ServiceFactory.getBienService().creerObjet(form.getFirstValue("type"), form.getFirstValue("surface"), form.getFirstValue("energie"), form.getFirstValue("adresse"), form.getFirstValue("codePostal"), form.getFirstValue("ville"), form.getFirstValue("tailleGarage"), form.getFirstValue("nbPieces"), form.getFirstValue("tailleVeranda"));
 
 				setStatus(Status.SUCCESS_CREATED);
 				getResponse().redirectSeeOther(getChildReference(getRequest().getResourceRef(), idBien));

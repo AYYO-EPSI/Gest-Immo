@@ -25,7 +25,8 @@ public class Bien {
 
 	}
 
-	public Bien(double nouvelleSurface, char ener, String nouvelleAdresse, String cp, String ville, int tailleGarage, int nbPieces, int tailleVeranda) {
+	public Bien(Type type, double nouvelleSurface, char ener, String nouvelleAdresse, String cp, String ville, int tailleGarage, int nbPieces, int tailleVeranda) {
+		setType(type);
 		setSurface(nouvelleSurface);
 		setEnergie(ener);
 		setAdresse(nouvelleAdresse);
