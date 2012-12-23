@@ -1,6 +1,10 @@
 package com.gestimmo.serveur.launcher;
 
-import com.gestimmo.serveur.resources.*;
+import com.gestimmo.serveur.processes.HandlerHibernate;
+import com.gestimmo.serveur.resources.BienResource;
+import com.gestimmo.serveur.resources.DefaultResource;
+import com.gestimmo.serveur.resources.LocationResource;
+import com.gestimmo.serveur.resources.PeriodeResource;
 import freemarker.template.Configuration;
 import org.restlet.Application;
 import org.restlet.Restlet;

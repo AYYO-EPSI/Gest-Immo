@@ -1,7 +1,6 @@
-package com.gestimmo.serveur.resources;
+package com.gestimmo.serveur.processes;
 
 import com.gestimmo.metier.exceptions.ApplicationMainException;
-import com.gestimmo.serveur.processes.HibernateUtil;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
 import org.restlet.Context;

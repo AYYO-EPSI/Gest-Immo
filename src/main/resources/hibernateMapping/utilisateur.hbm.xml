@@ -7,7 +7,7 @@
             <generator class="increment"/>
         </id>
 
-        <bag name="biens" table="bien" cascade="delete" order-by="bien_id" lazy="false">
+        <bag name="biens" table="bien" cascade="delete" order-by="bien_id">
             <key column="bien_idUtil" not-null="false"/>
             <one-to-many class="Bien"/>
         </bag>

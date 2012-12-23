@@ -8,8 +8,8 @@ public class Utilisateur {
 	private int id;
 	private List<Bien> biens = new ArrayList<Bien>();
 
-	public void setId(int i) {
-		this.id = i;
+	public void setId(int nouvelId) {
+		id = nouvelId;
 	}
 
 	public int getId() {
