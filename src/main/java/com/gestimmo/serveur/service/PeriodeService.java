@@ -17,7 +17,7 @@ public class PeriodeService extends GenericService {
 		Periode periode = new Periode(lib, dateDeb, dateFin, prix);
 
 
-		Bien bien = (Bien) DaoFactory.getBienDAO().find(Bien.class, Integer.parseInt(args[0]));
+		Bien bien = (Bien) DaoFactory.getBienDAO().find(Integer.parseInt(args[0]));
 		bien.ajouterPeriode(periode);
 
 		DaoFactory.getPeriodeDAO().saveOrUpdate(periode);
@@ -28,7 +28,7 @@ public class PeriodeService extends GenericService {
 
 	@Override
 	public Periode recupererObjet(int idPeriode) {
-		return (Periode) DaoFactory.getPeriodeDAO().find(Periode.class, idPeriode);
+		return (Periode) DaoFactory.getPeriodeDAO().find(idPeriode);
 	}
 
 	@Override

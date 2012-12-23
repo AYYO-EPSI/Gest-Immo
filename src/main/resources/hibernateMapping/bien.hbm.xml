@@ -23,7 +23,7 @@
         </bag>
 
         <bag name="locations" table="location" cascade="delete" order-by="location_id">
-            <key column="location_idBien" not-null="false"/>
+            <key column="location_idBien" not-null="true"/>
             <one-to-many class="Location"/>
         </bag>
     </class>

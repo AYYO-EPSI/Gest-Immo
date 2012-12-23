@@ -1,13 +1,11 @@
 package com.gestimmo.serveur.processes;
 
-import com.gestimmo.metier.exceptions.ApplicationMainException;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
 import org.restlet.Context;
 import org.restlet.Request;
 import org.restlet.Response;
 import org.restlet.data.Status;
-import org.restlet.resource.ResourceException;
 import org.restlet.routing.Filter;
 
 public class HandlerHibernate extends Filter {

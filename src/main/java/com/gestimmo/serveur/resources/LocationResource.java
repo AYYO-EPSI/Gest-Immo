@@ -17,6 +17,7 @@ public class LocationResource extends BaseResource {
 
 	@Override
 	public void doInit() {
+		super.doInit();
 		leBienParent = ServiceFactory.getBienService().recupererObjet(Integer.parseInt((String) getRequest().getAttributes().get("bienId")));
 	}
 

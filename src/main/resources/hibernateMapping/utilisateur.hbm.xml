@@ -8,7 +8,7 @@
         </id>
 
         <bag name="biens" table="bien" cascade="delete" order-by="bien_id">
-            <key column="bien_idUtil" not-null="false"/>
+            <key column="bien_idUtil" not-null="true"/>
             <one-to-many class="Bien"/>
         </bag>
     </class>

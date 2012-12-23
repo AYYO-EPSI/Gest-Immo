@@ -18,6 +18,7 @@ public class BienResource extends BaseResource {
 
 	@Override
 	public void doInit() {
+		super.doInit();
 		if (getRequest().getAttributes().get("bienId") != null) {
 			int idBien = Integer.parseInt((String) getRequest().getAttributes().get("bienId"));
 			leBienRepresente = ServiceFactory.getBienService().recupererObjet(idBien);
@@ -41,7 +42,7 @@ public class BienResource extends BaseResource {
 			final Form form = new Form(entity);
 
 			try {
-				final int idBien = ServiceFactory.getBienService().creerObjet(form.getFirstValue("type"), form.getFirstValue("surface"), form.getFirstValue("energie"), form.getFirstValue("adresse"), form.getFirstValue("codePostal"), form.getFirstValue("ville"), form.getFirstValue("tailleGarage"), form.getFirstValue("nbPieces"), form.getFirstValue("tailleVeranda"));
+				final int idBien = ServiceFactory.getBienService().creerObjet("1", form.getFirstValue("type"), form.getFirstValue("surface"), form.getFirstValue("energie"), form.getFirstValue("adresse"), form.getFirstValue("codePostal"), form.getFirstValue("ville"), form.getFirstValue("tailleGarage"), form.getFirstValue("nbPieces"), form.getFirstValue("tailleVeranda"));
 
 				setStatus(Status.SUCCESS_CREATED);
 				getResponse().redirectSeeOther(getChildReference(getRequest().getResourceRef(), idBien));
