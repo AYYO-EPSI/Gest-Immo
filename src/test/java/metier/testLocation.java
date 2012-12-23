@@ -10,7 +10,7 @@ import static org.hamcrest.MatcherAssert.assertThat;
 
 public class testLocation extends TestCase {
 
-	 Location uneLocation;
+	Location uneLocation;
 
 	public static TestSuite suite() {
 		return new TestSuite(testLocation.class);
@@ -26,7 +26,7 @@ public class testLocation extends TestCase {
 	}
 
 	public void testPeriodeExiste() {
-		Interval p = new Interval(123456,654321);
+		Interval p = new Interval(123456, 654321);
 		uneLocation.setPeriode(p);
 		assertThat(uneLocation.getPeriode(), is(allOf(instanceOf(Interval.class), notNullValue(Interval.class))));
 	}

@@ -6,18 +6,18 @@
 <!--[if gt IE 8]><!-->
 <html class="no-js"> <!--<![endif]-->
 <head>
-    <meta charset="utf-8">
-    <title>${title?html}</title>
+	<meta charset="utf-8">
+	<title>${title?html}</title>
 
-    <link rel="stylesheet" href="/styles/master.css">
+	<link rel="stylesheet" href="/styles/master.css">
 
-    <!--[if lt IE 9]>
+	<!--[if lt IE 9]>
     <script src="/js/html5shiv.js"></script>
-    <![endif]-->
+	<![endif]-->
 
-    <script src="/js/jquery-1.8.2.min.js"></script>
-    <script src="/js/plugins.js"></script>
-    <script src="/js/main.js"></script>
+	<script src="/js/jquery-1.8.2.min.js"></script>
+	<script src="/js/plugins.js"></script>
+	<script src="/js/main.js"></script>
 </head>
 
 <body>

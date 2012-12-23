@@ -15,8 +15,8 @@ import static org.hamcrest.MatcherAssert.assertThat;
 
 public class testBien extends TestCase {
 
-	 Bien unBien;
-	 Calculateur calc;
+	Bien unBien;
+	Calculateur calc;
 
 	public static TestSuite suite() {
 		return new TestSuite(testBien.class);
@@ -160,8 +160,8 @@ public class testBien extends TestCase {
 
 		unBien.ajouterPeriode(periode);
 		Interval interval = new Interval(dateDebutReservation, dateFinReservation);
-		
-		assertThat(calc.calculerPrixLocation(unBien, interval), is(periode.getMontant() * ( Days.daysBetween(dateDebutReservation.toDateMidnight(), dateFinReservation.toDateMidnight()).getDays() )));
+
+		assertThat(calc.calculerPrixLocation(unBien, interval), is(periode.getMontant() * (Days.daysBetween(dateDebutReservation.toDateMidnight(), dateFinReservation.toDateMidnight()).getDays())));
 	}
 
 	public void testCalculerPrixPourPlusieursIntervales() {
@@ -187,8 +187,8 @@ public class testBien extends TestCase {
 		double montant = periode1.getMontant() * 16;
 		montant += periode2.getMontant() * 28;
 		montant += periode3.getMontant() * 14;
-		
-		assertThat(calc.calculerPrixLocation(unBien, new Interval(dateDebutReservation, dateFinReservation)), is( montant ));
+
+		assertThat(calc.calculerPrixLocation(unBien, new Interval(dateDebutReservation, dateFinReservation)), is(montant));
 	}
 
 	public void testType() {

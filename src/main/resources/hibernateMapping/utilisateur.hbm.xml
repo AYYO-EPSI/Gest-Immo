@@ -2,14 +2,14 @@
 <!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
         "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
 <hibernate-mapping package="com.gestimmo.metier.model">
-    <class name="Location" table="location">
-        <id name="id" column="location_id" type="integer">
+    <class name="Utilisateur" table="utilisateur">
+        <id name="id" column="util_id" type="integer">
             <generator class="increment"/>
         </id>
 
-        <property name="periode" type="org.jadira.usertype.dateandtime.joda.PersistentInterval">
-            <column name="location_datedebut"/>
-            <column name="location_datefin"/>
-        </property>
+        <bag name="biens" table="bien" cascade="delete" order-by="bien_id" lazy="false">
+            <key column="bien_idUtil" not-null="false"/>
+            <one-to-many class="Bien"/>
+        </bag>
     </class>
 </hibernate-mapping>

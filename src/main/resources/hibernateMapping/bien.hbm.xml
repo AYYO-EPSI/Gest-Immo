@@ -1,28 +1,29 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+        "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
 <hibernate-mapping package="com.gestimmo.metier.model">
     <class name="Bien" table="bien">
         <id name="idBien" column="bien_id" type="integer">
-            <generator class="increment" />
+            <generator class="increment"/>
         </id>
-        
-        <property name="surface" column="bien_surface" type="double" not-null="true" />
-        <property name="energie" column="bien_energie" type="char" not-null="true" />
-        <property name="codePostal" column="bien_codePostal" type="string" not-null="true" />
-        <property name="adresse" column="bien_adresse" type="string" not-null="true" />
-        <property name="ville" column="bien_ville" type="string" not-null="true" />
-        <property name="tailleGarage" column="bien_tailleGarage" type="integer" not-null="false" />
-        <property name="nbPieces" column="bien_nbPieces" type="integer" not-null="true" />
-        <property name="tailleVeranda" column="bien_tailleVeranda" type="integer" not-null="false" />
+
+        <property name="surface" column="bien_surface" type="double" not-null="true"/>
+        <property name="energie" column="bien_energie" type="char" not-null="true"/>
+        <property name="codePostal" column="bien_codePostal" type="string" not-null="true"/>
+        <property name="adresse" column="bien_adresse" type="string" not-null="true"/>
+        <property name="ville" column="bien_ville" type="string" not-null="true"/>
+        <property name="tailleGarage" column="bien_tailleGarage" type="integer" not-null="false"/>
+        <property name="nbPieces" column="bien_nbPieces" type="integer" not-null="true"/>
+        <property name="tailleVeranda" column="bien_tailleVeranda" type="integer" not-null="false"/>
 
         <bag name="periodes" table="periode" cascade="delete" order-by="periode_id" lazy="false">
-            <key column="periode_idBien" not-null="true" />
-            <one-to-many class="Periode" />
+            <key column="periode_idBien" not-null="true"/>
+            <one-to-many class="Periode"/>
         </bag>
 
         <bag name="locations" table="location" cascade="delete" order-by="location_id" lazy="false">
-            <key column="location_idBien" not-null="false" />
-            <one-to-many class="Location" />
+            <key column="location_idBien" not-null="false"/>
+            <one-to-many class="Location"/>
         </bag>
     </class>
 </hibernate-mapping>

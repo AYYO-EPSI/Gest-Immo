@@ -2,10 +2,8 @@ package com.gestimmo.serveur.service;
 
 import com.gestimmo.metier.dao.DaoFactory;
 import com.gestimmo.metier.model.Bien;
-import com.gestimmo.metier.model.Location;
 import com.gestimmo.metier.model.Periode;
 import org.joda.time.DateTime;
-import org.joda.time.Interval;
 
 public class PeriodeService extends GenericService {
 

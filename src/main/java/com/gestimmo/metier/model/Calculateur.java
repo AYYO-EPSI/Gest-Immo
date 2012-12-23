@@ -6,8 +6,7 @@ import org.joda.time.Interval;
 import java.util.HashMap;
 import java.util.Map;
 
-public class
-		Calculateur {
+public class Calculateur {
 	public double calculerPrixLocation(Bien bien, Interval datesReservation) {
 		double prixARetourner = 0;
 		HashMap<Integer, Periode> listePeriodes = new HashMap<Integer, Periode>();

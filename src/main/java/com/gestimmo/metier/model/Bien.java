@@ -165,7 +165,7 @@ public class Bien {
 	}
 
 	public void ajouterPeriode(Periode nouvellePeriode) {
-		for (Periode unePeriode: periodes) {
+		for (Periode unePeriode : periodes) {
 			if (unePeriode.getPeriode().overlaps(nouvellePeriode.getPeriode())) {
 				throw new AppliDataException("Les périodes de location se chevauchent.");
 			}
@@ -182,7 +182,7 @@ public class Bien {
 	}
 
 	public void ajouterLocation(Location nouvelleLoc) {
-		for (Location uneLocation: locations) {
+		for (Location uneLocation : locations) {
 			if (uneLocation.getPeriode().overlaps(nouvelleLoc.getPeriode())) {
 				throw new AppliDataException("Les périodes de location se chevauchent.");
 			}
@@ -194,7 +194,7 @@ public class Bien {
 		locations = listeLocations;
 	}
 
-	public double calculerMontantLocation( int idLocation ) {
-		return calc.calculerPrixLocation( this, (getLocation( idLocation )).getPeriode() );
+	public double calculerMontantLocation(int idLocation) {
+		return calc.calculerPrixLocation(this, (getLocation(idLocation)).getPeriode());
 	}
 }
