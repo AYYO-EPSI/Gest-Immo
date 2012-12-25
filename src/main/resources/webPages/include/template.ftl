@@ -21,9 +21,15 @@
 </head>
 
 <body>
+    <header>
+        <nav>
+	        <a href="/biens">Tous vos biens</a>
+        </nav>
+    </header>
 
-    <#nested/>
-
+    <section>
+        <#nested/>
+    </section>
 </body>
 </html>
 </#macro>

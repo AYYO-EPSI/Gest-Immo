@@ -1,10 +1,7 @@
 package com.gestimmo.serveur.launcher;
 
 import com.gestimmo.serveur.processes.HandlerHibernate;
-import com.gestimmo.serveur.resources.BienResource;
-import com.gestimmo.serveur.resources.DefaultResource;
-import com.gestimmo.serveur.resources.LocationResource;
-import com.gestimmo.serveur.resources.PeriodeResource;
+import com.gestimmo.serveur.resources.*;
 import freemarker.template.Configuration;
 import org.restlet.Application;
 import org.restlet.Restlet;
@@ -29,6 +26,7 @@ public class Mainapplication extends Application {
 		attachRessources(router);
 
 		router.attachDefault(DefaultResource.class);
+		hibernateHandling(router, "/biens", BiensResource.class);
 		hibernateHandling(router, "/bien", BienResource.class);
 		hibernateHandling(router, "/bien/{bienId}", BienResource.class);
 
